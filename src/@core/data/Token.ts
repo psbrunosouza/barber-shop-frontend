@@ -1,0 +1,3 @@
+class Token {
+  token: string;
+}

@@ -1,0 +1,42 @@
+{
+  "usuarios": [
+    {
+      "nome": "Cleberson ",
+      "email": "216181030@unifacs.edu.br",
+      "senha": "123132bb",
+      "id": 1
+    },
+    {
+      "email": "cleberson.santos@capgemini.com",
+      "senha": "123123bb",
+      "id": 2
+    },
+    {
+      "email": "cburis15@hotmail.com",
+      "senha": "123123bb",
+      "id": 3
+    },
+    {
+      "email": "DSDS",
+      "senha": "DSDSDS",
+      "id": 4
+    },
+    {
+      "nome": "Cleberson Buri",
+      "email": "cleberson.santos@capgemini.com",
+      "senha": "123213123b",
+      "id": 5
+    },
+    {
+      "email": "cburis15@hotmail.com",
+      "senha": "123123bb",
+      "id": 6
+    },
+    {
+      "nome": "",
+      "email": "",
+      "senha": "",
+      "id": 7
+    }
+  ]
+}

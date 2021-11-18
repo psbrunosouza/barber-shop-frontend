@@ -1,0 +1,25 @@
+<main>
+    <section class="contato">
+        <h2 class="titulo-principal">Entre em contato conosco</h2>
+        <form id="form-contato" action="">
+            <label for="nome-completo">Nome completo</label>
+            <input type="text" name="nomeCompleto" placeholder="Seu Nome" class="input-padrao" required>
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="seuemail@email.com" class="input-padrao" required>
+            <label for="telefone">telefone</label>
+            <input type="tel" name="telefone" placeholder="(XX) XXXX-XXXX" class="input-padrao" required>
+            <label for="txt-mensagem">Mensagem</label>
+            <textarea name="txtMensagem" id="" cols="30" rows="10"></textarea>
+            <fieldset>
+                <legend>Como prefere receber o nosso contato?</legend>
+                <label for="radio-email"><input type="radio" value="radio-email" name="formaContato">Email</label>
+                <label for="radio-telefone"><input type="radio" value="radio-telefone" name="formaContato">Telefone</label>
+                <label for="radio-whatsapp"><input type="radio" value="radio-whatsapp" name="formaContato">Whatsapp</label>
+            </fieldset>
+            <label class="checkbox"><input type="checkbox" name="newsletter" value="marcado">Gostaria de receber as nossas novidades por email?</label>
+            <ul id="mensagens-erro">
+            </ul>
+            <input id="contato" type="submit" value="Enviar" class="btn-enviar">
+        </form>
+    </section>
+</main>

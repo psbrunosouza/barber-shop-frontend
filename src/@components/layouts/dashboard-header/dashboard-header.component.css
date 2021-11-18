@@ -1,0 +1,20 @@
+header {
+  background: #F8F9FA;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  margin-left: 26px;
+  display: flex;
+  align-items: center;
+}
+
+nav div a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}

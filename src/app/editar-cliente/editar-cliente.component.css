@@ -1,0 +1,64 @@
+:root {
+    --offcanvas-width: 270px;
+    --topNavBarHeight: 56px;
+  }
+  
+  .sidebar-nav {
+    width: var(--offcanvas-width);
+  }
+  
+  @media (min-width: 992px) {
+    body {
+      overflow: auto !important;
+    }
+  
+    main {
+      margin-left: var(--offcanvas-width);
+    }
+  
+    .offcanvas-backdrop::before {
+      display: none;
+    }
+  
+    .sidebar-nav {
+      transform: none;
+      visibility: visible !important;
+      top: var(--topNavBarHeight);
+      height: calc(100% - var(--topNavBarHeight));
+    }
+    
+  }
+  
+  .logo {
+    width: 120px;
+  }
+  
+  .navbar {
+    background-color: #2d2928;
+  }
+  
+  .carousel {
+    padding-top: 100px;
+  }
+  
+  .w-100 {
+    width: 80%;
+  }
+  
+  .diferenciais p {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .icones img {
+    width: 80px;
+  }
+  
+  .avatar {
+    width: 160px;
+  }
+  
+  .cadastro {
+    width: 240px;
+  }
+  
