@@ -1,6 +1,7 @@
 import {User} from "./User";
+import {Observable} from "rxjs";
 
-export class Barber{
+export class BarberShop {
   id: number;
   created_at: Date;
   updated_at: Date;
@@ -8,10 +9,14 @@ export class Barber{
   name: string;
   email: string;
   document: string;
-  zipconde: string;
+  zipcode: string;
   street: string;
   state: string;
   city: string;
   streetNumber: string;
   user: User;
+}
+
+export abstract class BarberShopServiceModel {
+  abstract create(barber: BarberShop):  Observable<BarberShop>;
 }

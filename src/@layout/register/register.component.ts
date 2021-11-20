@@ -1,46 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CadastroService } from '../../app/Services/cadastro.service';
-import { take } from 'rxjs/operators';
+import {User} from "../../@core/data/User";
+import {NgForm} from "@angular/forms";
+import {BarberShop} from "../../@core/data/BarberShop";
+import {AuthUserService} from "../../@core/api/auth/auth-user.service";
+import {BarberShopService} from "../../@core/api/barber/barber-shop.service";
+import {Router} from "@angular/router";
+import {ToasterHelper} from "../../@core/helpers/toaster.helper";
+import {UserService} from "../../@core/api/user/user.service";
 
+enum PROFILE {
+  USER = "user",
+  BARBER = "barber"
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [AuthUserService, BarberShopService, ToasterHelper, UserService  ]
 })
 export class RegisterComponent implements OnInit {
+  user: User;
+  barber: BarberShop;
+  isBarber: boolean;
 
-  readonly regexSenha: RegExp = /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,}$/;
-  readonly regexEmail: RegExp = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/;
-  readonly regexNome: RegExp = /^[a-zA-Z\s]{5,}$/;
-
-  cadastroForm!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private cadastroService: CadastroService) { }
+  constructor(
+    private userService: UserService,
+    private barberShopService: BarberShopService,
+    private router: Router,
+    private toasterHelper: ToasterHelper
+  ) { }
 
   ngOnInit(): void {
-    this.cadastroForm = this.formBuilder.group({
-      nome: this.formBuilder.control('', [Validators.required, Validators.pattern(this.regexNome)]),
-      email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.regexEmail)]),
-      senha: this.formBuilder.control('', [Validators.required, Validators.pattern(this.regexSenha)])
-    })
+    this.user = new User();
+    this.barber = new BarberShop();
+    this.barber.user = new User();
   }
 
-
-  cadastrar(): void {
-    this.cadastroService
-      .cadastrarUsuario(this.cadastroForm?.value)
-      .pipe(take(1))
-      .subscribe(
-        (success) =>
-          alert("Usuario cadastrado com sucesso")
-          ,
-        (error) =>
-          alert("Usuario nao cadastrado")
-      );
-
-    this.cadastroForm.reset();
+  register(form: NgForm): void {
+    if(form.valid){
+      if(!this.isBarber){
+        this.user.profile = PROFILE.USER;
+        this.userService.create(this.user).subscribe(response => {
+          this.toasterHelper.showSuccess('Sucesso', 'Cadastro realizado com sucesso!');
+          this.router.navigate(['/login']);
+        }, () => {
+          this.toasterHelper.showError('Erro', 'Erro ao realizar o cadastro!');
+        });
+      }else{
+        this.user.profile = PROFILE.BARBER;
+        this.userService.create(this.user).subscribe((user) => {
+          this.barber.user = user;
+          this.barberShopService.create(this.barber).subscribe((r) => {
+            this.toasterHelper.showSuccess('Sucesso', 'Cadastro realizado com sucesso!');
+            this.router.navigate(['/login']);
+          })
+        }, () => {
+          this.toasterHelper.showError('Erro', 'Erro ao realizar o cadastro!');
+        });
+      }
+    }
   }
 
 }

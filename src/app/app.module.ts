@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
 import {LayoutModule} from "../@layout/layout.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import {LayoutModule} from "../@layout/layout.module";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
