@@ -5,6 +5,9 @@ import { HomeComponent } from './home/home.component';
 import {ComponentsModule} from "../../@components/components.module";
 import {DashboardComponent} from "./dashboard.component";
 import {RouterModule} from "@angular/router";
+import { UserComponent } from './user/user.component';
+import {FormsModule} from "@angular/forms";
+import {TokenHelper} from "../../@core/helpers/token.helper";
 
 
 
@@ -12,12 +15,17 @@ import {RouterModule} from "@angular/router";
   declarations: [
     HomeComponent,
     DashboardComponent,
+    UserComponent,
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    ComponentsModule,
-    RouterModule,
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        ComponentsModule,
+        RouterModule,
+        FormsModule,
+    ],
+  providers: [
+    TokenHelper
   ]
 })
 export class DashboardModule { }

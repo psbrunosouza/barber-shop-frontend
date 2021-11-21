@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import {User} from "../../data/User";
 import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthUserService {
 
-  readonly url = 'http://localhost:3333/v1/barbershop/users/login'
+  readonly url = `${environment.baseUrl}/v1/barbershop/users`
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
+  login(user: User): Observable<Token>{
+    return this.http.post<Token>(`${this.url}/login`, user);
   }
 
-  auth(user: User): Observable<Token>{
-    return this.http.post<Token>(this.url, user);
-  }
+
 }

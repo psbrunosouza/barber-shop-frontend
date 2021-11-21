@@ -1,0 +1,16 @@
+div {
+  background: #354052;
+  height: 48px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+div .company {
+  color: #fff;
+}
+
+div .version {
+  color: #fff;
+  margin-right: 24px;
+}

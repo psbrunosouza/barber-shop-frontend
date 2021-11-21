@@ -1,45 +1,210 @@
-<app-header></app-header>
 <section class="mt-5 py-5 container-fluid login">
   <div class="my-3 py-3 text-center">
     <img class="cadastro  mb-3" src="../../assets/img/cadastro.svg" alt="">
     <h3 class=" justify-content-center">Cadastro de Clientes</h3>
   </div>
-  <form *ngIf="cadastroForm" [formGroup]="cadastroForm">
-    <div class="row justify-content-center">
-      <div class="mb-3 col-md-4 col-md-6 col-lg-3">
-        <label for="user" class="form-label">Nome</label>
-        <input messageLabel="Informe seu nome:" formControlName="nome" placeHolder="seu nome completo" type="text"  class="form-control" [ngClass]="!cadastroForm.controls.nome.errors ? 'is-valid' : 'is-invalid'" id="user" aria-describedby="email">
+  <form #form="ngForm">
+    <div class="d-flex h-100 flex-column align-items-center">
+      <div class="col-4">
+        <label for="name" class="form-label">Nome</label>
+        <input
+          [ngClass]="fieldName.errors?.required && fieldName.dirty ? 'is-invalid' : 'is-valid'"
+          #fieldName="ngModel"
+          required
+          [(ngModel)]="user.name"
+          name="name"
+          placeHolder="Nome de usuário"
+          type="text"
+          class="form-control"
+          id="name"
+        >
+        <p *ngIf="fieldName.errors?.required && fieldName.dirty" style="color: #DC3545">Campo requerído</p>
       </div>
-      <div class="row justify-content-center">
-        <div class="mb-3 col-md-4 col-md-6 col-lg-3">
-          <label for="email" class="form-label">Email</label>
-          <input messageLabel="Informe seu email:" formControlName="email" placeHolder="seu_email@email.com" type="email" class="form-control" [ngClass]="!cadastroForm.controls.email.errors ? 'is-valid' : 'is-invalid'" id="email" aria-describedby="email">
+      <div class="col-4">
+        <label for="email" class="form-label">Email</label>
+        <input
+          [ngClass]="fieldEmail.errors?.email  && fieldEmail.dirty  ? 'is-invalid' : 'is-valid'"
+          #fieldEmail="ngModel"
+          email
+          [(ngModel)]="user.email"
+          placeHolder="Endereço de e-mail"
+          type="email"
+          name="email"
+          class="form-control"
+          id="email"
+        >
+        <p *ngIf="fieldEmail.errors?.email && fieldEmail.dirty" style="color: #DC3545">Digite um e-mail válido</p>
+      </div>
+      <div class="col-4">
+        <label for="password" class="form-label">Senha</label>
+        <input
+          minlength="8"
+          [ngClass]="fieldPassword.errors?.minlength  && fieldPassword.dirty  ? 'is-invalid' : 'is-valid'"
+          #fieldPassword="ngModel"
+          [(ngModel)]="user.password"
+          name="password"
+          placeHolder="Senha de cadastro"
+          type="password"
+          class="form-control"
+          id="password"
+        >
+        <p *ngIf="fieldPassword.errors?.minlength  && fieldPassword.dirty " style="color: #DC3545">Password deve conter no mínimo 8 dígitos</p>
+      </div>
+
+      <div class="col-4 mt-3" *ngIf="isBarber">
+        <div class="col-12">
+          <label for="barber" class="form-label">Barbearia</label>
+          <input
+            [ngClass]="fieldBarber.errors?.required && fieldBarber.dirty ? 'is-invalid' : 'is-valid'"
+            #fieldBarber="ngModel"
+            required
+            [(ngModel)]="barber.name"
+            name="barber"
+            placeHolder="Nome do estabelecimento"
+            type="text"
+            class="form-control"
+            id="barber"
+          >
+          <p *ngIf="fieldBarber.errors?.required && fieldBarber.dirty" style="color: #DC3545">Campo requerído</p>
+        </div>
+
+        <div class="col-12">
+          <label for="barberEmail" class="form-label">E-mail da Barbearia</label>
+          <input
+            email
+            [ngClass]="fieldEmailBarber.errors?.email && fieldEmailBarber.dirty ? 'is-invalid' : 'is-valid'"
+            #fieldEmailBarber="ngModel"
+            [(ngModel)]="barber.email"
+            name="barberEmail"
+            placeHolder="E-mail do estabelecimento"
+            type="text"
+            class="form-control"
+            id="barberEmail"
+          >
+          <p *ngIf="fieldEmailBarber.errors?.email && fieldEmailBarber.dirty" style="color: #DC3545">Digite um e-mail válido!</p>
+        </div>
+
+        <div class="row">
+          <div class="col-6 mr-2">
+            <label for="document" class="form-label">CNPJ/CPF</label>
+            <input
+              required
+              [ngClass]="document.errors?.required && document.dirty ? 'is-invalid' : 'is-valid'"
+              #document="ngModel"
+              [(ngModel)]="barber.document"
+              name="document"
+              placeHolder="Documentação do responsável"
+              type="text"
+              class="form-control"
+              id="document"
+            >
+            <p *ngIf="document.errors?.required && document.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
+
+          <div class="col-6 ml-2">
+            <label for="zipcode" class="form-label">CEP</label>
+            <input
+              required
+              [ngClass]="zipcode.errors?.required && zipcode.dirty ? 'is-invalid' : 'is-valid'"
+              #zipcode="ngModel"
+              [(ngModel)]="barber.zipcode"
+              name="zipcode"
+              placeHolder="CEP"
+              type="text"
+              class="form-control"
+              id="zipcode"
+            >
+            <p *ngIf="zipcode.errors?.required && zipcode.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 mr-2">
+            <label for="street" class="form-label">Endereço</label>
+            <input
+              required
+              [ngClass]="street.errors?.required && street.dirty ? 'is-invalid' : 'is-valid'"
+              #street="ngModel"
+              [(ngModel)]="barber.street"
+              name="street"
+              placeHolder="Endereço"
+              type="text"
+              class="form-control"
+              id="street"
+            >
+            <p *ngIf="street.errors?.required && street.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
+
+          <div class="col-6 ml-2">
+            <label for="streetNumber" class="form-label">Número</label>
+            <input
+              [(ngModel)]="barber.streetNumber"
+              name="streetNumber"
+              placeHolder="Número"
+              type="text"
+              class="form-control"
+              id="streetNumber"
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6" >
+            <label for="state" class="form-label">Estado</label>
+            <input
+              required
+              [ngClass]="state.errors?.required && state.dirty ? 'is-invalid' : 'is-valid'"
+              #state="ngModel"
+              [(ngModel)]="barber.state"
+              name="state"
+              placeHolder="Estado do estabelecimento"
+              type="text"
+              class="form-control"
+              id="state"
+            >
+            <p *ngIf="state.errors?.required && state.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
+
+          <div class="col-6">
+            <label for="city" class="form-label">Cidade</label>
+            <input
+              required
+              [ngClass]="city.errors?.required && city.dirty ? 'is-invalid' : 'is-valid'"
+              #city="ngModel"
+              [(ngModel)]="barber.city"
+              name="city"
+              placeHolder="Cidade do estabelecimento"
+              type="text"
+              class="form-control"
+              id="city"
+            >
+              <p *ngIf="city.errors?.required && city.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="mb-3 col-md-4 col-md-6 col-lg-3">
-          <label for="senha" class="form-label">Senha</label>
-          <input formControlName="senha" placeHolder="Digite a senha" type="password" class="form-control" [ngClass]="!cadastroForm.controls.senha.errors ? 'is-valid' : 'is-invalid'" id="senha">
-            <ng-container *ngIf="cadastroForm.controls.senha.touched">
-              <span *ngIf="cadastroForm.controls.senha.errors">Senha com no minimo 8 caracteres, e 1 letra.</span>
-            </ng-container>
+
+      <div class="col-4 mt-3 d-flex justify-content-end">
+        <div class="form-check form-switch">
+          <label class="form-check-label pull-right" for="flexSwitchCheckDefault">Sou uma Barbearia</label>
+          <input name="isBarber" [(ngModel)]="isBarber" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class=" mt-3 col-md-4 text-center">
-          <Button type="submit" (click)="cadastrar()" class="btn btn-outline-dark" >Cadastrar</Button>
-          <a class="btn btn-outline-dark ms-3"  routerLink="/login-barber">Retornar ao Login</a>
-          <ul class="mt-3 list-unstyled">
-            <li class="p-1">
-              <a class="text-decoration-none " href="recuperar.html">Esqueci a senha</a>
-            </li>
-            <li class="p-1">
-              <a class="text-decoration-none " routerLink="/cadastro-barber">Cadastrar estabelecimento</a>
-            </li>
-          </ul>
+
+      <div class="col-4 mt-3 d-flex flex-column align-items-center">
+        <div class="col-12">
+          <Button type="submit" [disabled]="form.invalid" (click)="register(form)" style="width: 100%" class="btn btn-primary" >Cadastrar</Button>
         </div>
+
+        <ul class="mt-3 flex-column d-flex align-items-center list-unstyled">
+          <li class="p-1">
+            <a class="text-decoration-none text-center" routerLink="#">Esqueci a senha</a>
+          </li>
+          <li class="p-1">
+            <a class="text-decoration-none text-center" routerLink="/login">Retornar ao Login</a>
+          </li>
+        </ul>
       </div>
-  </div>
+    </div>
   </form>
 </section>
 

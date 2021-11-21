@@ -9,6 +9,7 @@ import {RegisterComponent} from "./register/register.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LayoutComponent } from './layout.component';
 import {ComponentsModule} from "../@components/components.module";
+import {CustomFormsModule} from "ng2-validation";
 
 
 
@@ -25,6 +26,7 @@ import {ComponentsModule} from "../@components/components.module";
     CommonModule,
     RouterModule,
     FormsModule,
+    CustomFormsModule,
     ReactiveFormsModule,
     ComponentsModule
   ],
