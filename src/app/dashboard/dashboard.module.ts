@@ -8,6 +8,7 @@ import {RouterModule} from "@angular/router";
 import { UserComponent } from './user/user.component';
 import {FormsModule} from "@angular/forms";
 import {TokenHelper} from "../../@core/helpers/token.helper";
+import { PackagesComponent } from './packages/packages.component';
 
 
 
@@ -16,6 +17,7 @@ import {TokenHelper} from "../../@core/helpers/token.helper";
     HomeComponent,
     DashboardComponent,
     UserComponent,
+    PackagesComponent,
   ],
     imports: [
         CommonModule,

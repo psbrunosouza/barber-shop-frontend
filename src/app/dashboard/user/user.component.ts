@@ -6,21 +6,28 @@ import {TokenHelper} from "../../../@core/helpers/token.helper";
 import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
 import {BarberShop} from "../../../@core/data/BarberShop";
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
+import {PermissionService} from "../../../@core/api/permissions/permission.service";
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  providers: [UserService, ToasterHelper, BarberShopService]
+  providers: [UserService, ToasterHelper, BarberShopService, PermissionService]
 })
 export class UserComponent implements OnInit {
 
   user: User;
   barberShop: BarberShop;
   currentMenuTab: string = 'user';
+  permission: string;
 
   constructor(
-    private userService: UserService, private toastHelper: ToasterHelper, private barberService: BarberShopService, private tokenHelper: TokenHelper) { }
+    private userService: UserService,
+    private toastHelper: ToasterHelper,
+    private barberService: BarberShopService,
+    private tokenHelper: TokenHelper,
+    private permissionService: PermissionService
+  ) {}
 
   ngOnInit(): void {
     this.user = new User();
@@ -28,6 +35,9 @@ export class UserComponent implements OnInit {
     this.barberShop.user = new User();
     this.loadUser();
     this.loadBarberBarber();
+    this.permissionService.hasPermission().then((permission) => {
+      this.permission = permission;
+    })
   }
 
   loadUser(): void{

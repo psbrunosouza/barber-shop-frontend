@@ -7,7 +7,7 @@
         </a>
       </li>
 
-      <li class="d-flex align-items-center justify-content-center" tooltip="Barbearias" placement="right" [showDelay]="100" [hideDelay]="100">
+      <li *ngIf="permission === 'user'" class="d-flex align-items-center justify-content-center" tooltip="Barbearias" placement="right" [showDelay]="100" [hideDelay]="100">
         <a routerLink="/dashboard/barber_shops" class="nav-link "  >
           <i class="bi bi-shop" style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
@@ -19,7 +19,7 @@
         </a>
       </li>
 
-      <li class="d-flex align-items-center justify-content-center" tooltip="Serviços" placement="right" [showDelay]="100" [hideDelay]="100">
+      <li *ngIf="permission === 'barber'" class="d-flex align-items-center justify-content-center" tooltip="Serviços" placement="right" [showDelay]="100" [hideDelay]="100">
         <a routerLink="/dashboard/packages"  class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
           <i class="bi bi-box-seam" style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
@@ -30,8 +30,6 @@
           <i class="bi-person-circle h2" style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
       </li>
-
-
     </ul>
   </div>
 </div>
