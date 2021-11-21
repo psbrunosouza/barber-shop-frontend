@@ -5,6 +5,7 @@ import {HomeComponent} from "./home/home.component";
 import {DashboardComponent} from "./dashboard.component";
 import {UserComponent} from "./user/user.component";
 import {AuthGuard} from "../../@core/guards/auth.guard";
+import {PackagesComponent} from "./packages/packages.component";
 
 const routes: Routes = [
   { path: '',
@@ -19,6 +20,11 @@ const routes: Routes = [
       {
         path: 'user',
         component: UserComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'packages',
+        component: PackagesComponent,
         canActivate: [AuthGuard],
       }
     ]
