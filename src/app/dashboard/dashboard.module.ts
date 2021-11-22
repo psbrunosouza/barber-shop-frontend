@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import {FormsModule} from "@angular/forms";
 import {TokenHelper} from "../../@core/helpers/token.helper";
 import { PackagesComponent } from './packages/packages.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 
 
@@ -18,6 +19,7 @@ import { PackagesComponent } from './packages/packages.component';
     DashboardComponent,
     UserComponent,
     PackagesComponent,
+    ScheduleComponent,
   ],
     imports: [
         CommonModule,
