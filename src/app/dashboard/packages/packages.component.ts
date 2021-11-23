@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Packages} from "../../../@core/data/Packages";
 import {NgForm} from "@angular/forms";
 import {PackageService} from "../../../@core/api/packages/package.service";
 import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
-import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
 import {TokenHelper} from "../../../@core/helpers/token.helper";
+import {ModalDialogService} from "ngx-modal-dialog";
+import {DeletePackageComponent} from "./delete-package/delete-package.component";
+import {EditPackageComponent} from "./edit-package/edit-package.component";
 
 @Component({
   selector: 'app-packages',
@@ -20,7 +22,9 @@ export class PackagesComponent implements OnInit {
   constructor(
     private packageService: PackageService,
     private toastHelper: ToasterHelper,
-    private tokenHelper: TokenHelper
+    private tokenHelper: TokenHelper,
+    private modalService: ModalDialogService,
+    private viewRef: ViewContainerRef
   ) { }
 
   ngOnInit(): void {
@@ -35,12 +39,43 @@ export class PackagesComponent implements OnInit {
     });
   }
 
+  openDeleteDialog(data: Packages){
+   this.modalService.openDialog(this.viewRef, {
+      title: 'Deletar Pacote',
+      childComponent: DeletePackageComponent,
+      data: data,
+      onClose: () => {
+        this.loadPackages();
+        return true;
+      }
+     }
+   )
+  }
+
+
+  openUpdateDialog(data: Packages){
+    this.modalService.openDialog(this.viewRef, {
+        title: 'Atualizar Pacote',
+        childComponent: EditPackageComponent,
+        data: data,
+        onClose: () => {
+          this.loadPackages();
+          return true;
+        }
+      }
+    )
+  }
+
   onSubmit(form: NgForm){
     if(form.valid){
       this.packageService.create(this.package).subscribe(() => {
         this.toastHelper.showSuccess("Sucesso", "Serviço criado com sucesso!");
+        this.loadPackages();
+        form.reset();
       }, () => {
         this.toastHelper.showError("Erro", "Erro durante a criação do serviço, tente novamente!")
+        this.loadPackages()
+        form.reset();
       })
     }
   }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -9,8 +9,12 @@ import { UserComponent } from './user/user.component';
 import {FormsModule} from "@angular/forms";
 import {TokenHelper} from "../../@core/helpers/token.helper";
 import { PackagesComponent } from './packages/packages.component';
-
-
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+import {ModalDialogModule} from "ngx-modal-dialog";
+import { DeletePackageComponent } from './packages/delete-package/delete-package.component';
+import { EditPackageComponent } from './packages/edit-package/edit-package.component';
+registerLocaleData(localePt)
 
 @NgModule({
   declarations: [
@@ -18,16 +22,20 @@ import { PackagesComponent } from './packages/packages.component';
     DashboardComponent,
     UserComponent,
     PackagesComponent,
+    DeletePackageComponent,
+    EditPackageComponent,
   ],
     imports: [
-        CommonModule,
-        DashboardRoutingModule,
-        ComponentsModule,
-        RouterModule,
-        FormsModule,
+      CommonModule,
+      DashboardRoutingModule,
+      ComponentsModule,
+      RouterModule,
+      FormsModule,
+      ModalDialogModule
     ],
   providers: [
-    TokenHelper
+    TokenHelper,
+    {provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
 })
 export class DashboardModule { }
