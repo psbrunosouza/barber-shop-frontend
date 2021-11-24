@@ -13,7 +13,7 @@
 
     <form #form="ngForm">
       <div class="row">
-        <div class="col-md-3 col-sm-12 mt-2">
+        <div class="col-md-3 col-xl-3  col-sm-12 mt-2">
           <div class="form-floating ">
             <input
               [(ngModel)]="package.name"
@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div class="col-md-3 col-sm-12 mt-2">
+        <div class="col-md-3 col-xl-3  col-sm-12 mt-2">
           <div class="form-floating ">
             <input
               [(ngModel)]="package.value"
@@ -49,7 +49,7 @@
           </div>
         </div>
 
-        <div class="col-md-3 col-sm-12 mt-2">
+        <div class="col-md-3 col-xl-3 col-sm-12 mt-2">
           <div class="form-floating ">
             <input
               [(ngModel)]="package.description"
@@ -67,8 +67,8 @@
           </div>
         </div>
 
-        <div class="col-md-3 col-sm-12 mt-2">
-          <div class="form-group ">
+        <div class="col-md-3 col-xl-3 col-sm-12 mt-2">
+          <div class="form-group">
             <button [disabled]='form.invalid' class="btn btn-lg btn-primary" (click)="onSubmit(form)">Salvar</button>
           </div>
         </div>
@@ -108,6 +108,7 @@
     </div>
   </div>
 </main>
+
 
 
 
