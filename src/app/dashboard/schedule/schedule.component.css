@@ -1,0 +1,41 @@
+.card-schedule {
+  margin-left: 8%;
+  margin-top: 5%;
+  box-shadow: 4px 4px 2px #d6d6d6;
+}
+
+.card-schedule:hover {
+  box-shadow: 4px 8px 8px 0 #d6d6d6;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+.card {
+  padding: 15px;
+  width: 24rem;
+}
+
+.create-schedule {
+  width: 30rem;
+  margin-left: 8%;
+  margin-top: 5%;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+  transition: 0.3s;
+}
+
+.create-schedule:hover {
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.2);
+}
+
+.schedule-title {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.schedule-button {
+  padding: 8px;
+  text-align: end;
+}

@@ -9,6 +9,8 @@ import { UserComponent } from './user/user.component';
 import {FormsModule} from "@angular/forms";
 import {TokenHelper} from "../../@core/helpers/token.helper";
 import { PackagesComponent } from './packages/packages.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import {ModalDialogModule} from "ngx-modal-dialog";
@@ -22,6 +24,7 @@ registerLocaleData(localePt)
     DashboardComponent,
     UserComponent,
     PackagesComponent,
+    ScheduleComponent,
     DeletePackageComponent,
     EditPackageComponent,
   ],
