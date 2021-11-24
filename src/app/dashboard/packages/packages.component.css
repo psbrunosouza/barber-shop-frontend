@@ -7,15 +7,18 @@ main {
   display: flex;
 }
 
-
 .card {
   border: none;
-  -webkit-box-shadow: 0px 0px 6px -4px rgba(0,0,0,0.62);
-  box-shadow: 0px 0px 6px -4px rgba(0,0,0,0.62);
+  -webkit-box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.50);
+  box-shadow: 0px 0px 8px -3px rgba(0,0,0,0.50);
   transition: all 0.2s;
+
 }
 
 .card:hover {
-  -webkit-box-shadow: 0px 0px 9px -4px rgba(0,0,0,0.62);
-  box-shadow: 0px 0px 9px -4px rgba(0,0,0,0.62);
+  -moz-transform: translate(4px, 0px);
+  -webkit-transform: translate(4px, 0px);
+  -o-transform: translate(4px, 0px);
+  -ms-transform: translate(4px, 0px);
+  transform: translate(4px, 0px);
 }

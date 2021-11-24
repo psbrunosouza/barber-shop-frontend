@@ -4,6 +4,7 @@ import {Packages} from "../../../../@core/data/Packages";
 import {PackageService} from "../../../../@core/api/packages/package.service";
 import {ToasterHelper} from "../../../../@core/helpers/toaster.helper";
 import {NgForm} from "@angular/forms";
+import {TokenHelper} from "../../../../@core/helpers/token.helper";
 
 @Component({
   selector: 'app-edit-package',
@@ -12,6 +13,7 @@ import {NgForm} from "@angular/forms";
   providers: [PackageService, ToasterHelper]
 })
 export class EditPackageComponent implements OnInit {
+  packageId: number;
   data: Packages;
   closeMethodDialog: any;
   closeAction: any;
@@ -19,20 +21,30 @@ export class EditPackageComponent implements OnInit {
   constructor(
     private packageService: PackageService,
     private toastHelper: ToasterHelper,
+    private tokenHelper: TokenHelper,
   ) { }
 
   ngOnInit(): void {
+
   }
 
   dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<any>> ) {
-    this.data = options.data;
+    this.packageId = options.data;
     this.closeMethodDialog = options.closeDialogSubject;
     this.closeAction = options.onClose;
+    this.showPackage();
   }
 
   cancel(){
     this.closeMethodDialog.next();
     this.closeAction();
+  }
+
+  showPackage(){
+    if(this.tokenHelper.getBarberId()) this.packageService.show(this.packageId)
+      .subscribe((packages) => {
+        this.data = packages;
+      });
   }
 
   onUpdate(id: number, packageModel: Packages, form: NgForm){

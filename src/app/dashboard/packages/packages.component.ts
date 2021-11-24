@@ -21,8 +21,8 @@ export class PackagesComponent implements OnInit {
 
   constructor(
     private packageService: PackageService,
-    private toastHelper: ToasterHelper,
     private tokenHelper: TokenHelper,
+    private toastHelper: ToasterHelper,
     private modalService: ModalDialogService,
     private viewRef: ViewContainerRef
   ) { }
@@ -53,11 +53,11 @@ export class PackagesComponent implements OnInit {
   }
 
 
-  openUpdateDialog(data: Packages){
+  openUpdateDialog(id: number){
     this.modalService.openDialog(this.viewRef, {
         title: 'Atualizar Pacote',
         childComponent: EditPackageComponent,
-        data: data,
+        data: id,
         onClose: () => {
           this.loadPackages();
           return true;

@@ -3,21 +3,45 @@
      <div class="col-12 mt-2">
        <div class="form-group">
          <label class="form-label">Nome</label>
-         <input name="name" class="form-control" type="text" [(ngModel)]="data.name" />
+         <input
+           name="name"
+           class="form-control"
+           type="text"
+           [(ngModel)]="data.name"
+           required
+           [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
+           #name="ngModel"
+         />
+         <p *ngIf="name.errors?.required && name.dirty" style="color: #DC3545">Campo requerido.</p>
        </div>
+
      </div>
 
      <div class="col-12 mt-2">
        <div class="form-group">
          <label class="form-label">Descrição</label>
-         <input name="description" class="form-control" type="text" [(ngModel)]="data.description" />
+         <input
+           required
+           [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
+           #description="ngModel"
+           name="description"
+           class="form-control"
+           type="text"
+           [(ngModel)]="data.description"
+         />
+         <p *ngIf="description.errors?.required && description.dirty" style="color: #DC3545">Campo requerido.</p>
        </div>
      </div>
 
      <div class="col-12 mt-2">
        <div class="form-group">
          <label class="form-label">Valor</label>
-         <input name="value" class="form-control" type="text" [(ngModel)]="data.value" />
+         <input
+           required
+           [ngClass]="value.errors?.required && value.dirty ? 'is-invalid' : 'is-valid'"
+           #value="ngModel"
+           name="value" class="form-control" type="text" [(ngModel)]="data.value" />
+         <p *ngIf="value.errors?.required && value.dirty" style="color: #DC3545">Campo requerido.</p>
        </div>
      </div>
      <div class="col-12 mt-2 d-flex justify-content-end">
