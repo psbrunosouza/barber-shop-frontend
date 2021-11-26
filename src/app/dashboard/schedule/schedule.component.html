@@ -21,33 +21,36 @@
       </ul>
     </div>
 
-    <div class="card card-schedule" *ngIf="currentTab === 'calls'">
-      <div class="card-body">
-        <h5 class="card-title">Ordem de Serviço (Nome Barbearia)</h5>
+    <div *ngIf="scheduleExists">
+      <div class="card card-schedule" *ngIf="currentTab === 'calls'">
+        <div class="card-body">
+          <h5 class="card-title">Ordem de Serviço (Nome Barbearia)</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <p class="list-group-item">Data de agendamento - </p>
+          <li class="list-group-item">nome</li>
+          <li class="list-group-item">Valor: </li>
+          <li class="list-group-item">Descrição: </li>
+        </ul>
+        <div class="card-body">
+          <button href="#" class="btn btn-danger">Cancelar agendamento</button>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <p class="list-group-item">Data de agendamento - </p>
-        <li class="list-group-item">nome</li>
-        <li class="list-group-item">Valor: </li>
-        <li class="list-group-item">Descrição: </li>
-      </ul>
-      <div class="card-body">
-        <button href="#" class="btn btn-danger">Cancelar agendamento</button>
-      </div>
-    </div>
 
-    <div class="card card-schedule" *ngIf="currentTab === 'history'">
-      <div class="card-body">
-        <h5 class="card-title">Atendido em (end-date)</h5>
+      <div class="card card-schedule" *ngIf="currentTab === 'history'">
+        <div class="card-body">
+          <h5 class="card-title">Atendido em (end-date)</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Nome do pacote: </li>
+          <li class="list-group-item">Valor: </li>
+          <li class="list-group-item">Descrição: </li>
+          <li class="list-group-item">Nome da barbearia: </li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Nome do pacote: </li>
-        <li class="list-group-item">Valor: </li>
-        <li class="list-group-item">Descrição: </li>
-        <li class="list-group-item">Nome da barbearia: </li>
-      </ul>
     </div>
   </div>
+
   <div *ngIf="!scheduleExists">
     <form #form="ngForm">
       <div class="create-schedule">
@@ -70,6 +73,4 @@
     </form>
   </div>
 
-  <div class="form-group d-flex justify-content-end mt-2">
-  </div>
 </main>

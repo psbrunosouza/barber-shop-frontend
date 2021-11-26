@@ -13,9 +13,10 @@ import { ToasterHelper } from 'src/@core/helpers/toaster.helper';
 })
 export class ScheduleComponent implements OnInit {
   schedules: Schedule;
-  currentTab: string;
-  scheduleExists = true;
+  currentTab: string = 'calls';
+  scheduleExists: boolean;
   schedule: Schedule;
+
   constructor(
     private scheduleService: ScheduleService,
     private toastHelper: ToasterHelper
@@ -30,12 +31,15 @@ export class ScheduleComponent implements OnInit {
   tabOnClick(current: string) {
     this.currentTab = current;
   }
+
   loadSchedule() {
     this.scheduleService.list().subscribe(
       (schedule) => {
         this.schedules = schedule;
+        this.scheduleExists = true;
       },
-      (error) => {
+      () => {
+        console.log('eu')
         this.scheduleExists = false;
       }
     );
@@ -44,15 +48,13 @@ export class ScheduleComponent implements OnInit {
   save(form: NgForm) {
     if (form.valid) {
       this.scheduleService.create(this.schedule).subscribe(
-        (response) => {
+        () => {
           this.loadSchedule();
         },
-        (error) => {
+        () => {
           this.loadSchedule();
         }
       );
-    } else {
-      this.toastHelper.showError('Erro', 'Por favor verifique seus campos!');
     }
   }
 }
