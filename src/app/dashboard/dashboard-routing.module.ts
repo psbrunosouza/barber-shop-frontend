@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { AuthGuard } from '../../@core/guards/auth.guard';
 import { PackagesComponent } from './packages/packages.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import {BarberComponent} from "./barber/barber.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
       {
         path: 'schedule',
         component: ScheduleComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'barber',
+        component: BarberComponent,
         canActivate: [AuthGuard],
       },
     ],

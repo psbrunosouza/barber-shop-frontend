@@ -16,6 +16,7 @@ import {registerLocaleData} from '@angular/common';
 import {ModalDialogModule} from "ngx-modal-dialog";
 import { DeletePackageComponent } from './packages/delete-package/delete-package.component';
 import { EditPackageComponent } from './packages/edit-package/edit-package.component';
+import { BarberComponent } from './barber/barber.component';
 registerLocaleData(localePt)
 
 @NgModule({
@@ -27,6 +28,7 @@ registerLocaleData(localePt)
     ScheduleComponent,
     DeletePackageComponent,
     EditPackageComponent,
+    BarberComponent,
   ],
     imports: [
       CommonModule,
