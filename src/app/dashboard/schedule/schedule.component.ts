@@ -39,7 +39,6 @@ export class ScheduleComponent implements OnInit {
         this.scheduleExists = true;
       },
       () => {
-        console.log('eu')
         this.scheduleExists = false;
       }
     );
