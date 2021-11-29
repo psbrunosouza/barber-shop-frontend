@@ -1,27 +1,38 @@
-# BarberShop
+# Barber Shop - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
+O Barber Shop é uma aplicação voltada para gerenciamento e gestão de barbearias e seus colaboradores.
 
-## Development server
+## ✅ Como Usar
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+  ```
+# Clone o repositório
+$ git clone https://github.com/psbrunosouza/barber-shop-frontend.git
 
-## Code scaffolding
+# Entre na pasta do repositório
+$ cd barber-shop-frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Instale as dependências
+$ yarn install/ npm install
 
-## Build
+# Rode a aplicação
+$ yarn start/ npm run start
+  ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🚀 Tecnologias
 
-## Running unit tests
+Esse projeto foi desenvolvido para a disciplina de desenvolvimento e laboratório de software utilizando as seguintes
+tecnologias:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- <a href="https://angular.io/">Angular</a>
+- <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/">Bootstrap 5</a>
+- <a href="https://www.npmjs.com/package/ng2-validation">ng2-validation</a>
+- <a href="https://www.npmjs.com/package/ngx-modal-dialog">ngx-modal-dialog</a>
+- <a href="https://www.npmjs.com/package/ngx-toastr">ngx-toastr</a>
+- <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
+- <a href="https://fontawesome.com/">Font Awesome</a>
 
-## Running end-to-end tests
+## 📝 Licença
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Este projeto codigo fonte está sob uma licensa MIT. Confira a licença para mais informações.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

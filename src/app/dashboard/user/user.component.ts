@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {User} from "../../../@core/data/User";
 import {UserService} from "../../../@core/api/user/user.service";
@@ -7,6 +7,7 @@ import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
 import {BarberShop} from "../../../@core/data/BarberShop";
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
 import {PermissionService} from "../../../@core/api/permissions/permission.service";
+import {AttendanceTimeline} from "../../../@core/data/AttendanceTimeline";
 
 @Component({
   selector: 'app-user',
@@ -18,6 +19,7 @@ export class UserComponent implements OnInit {
 
   user: User;
   barberShop: BarberShop;
+  attedanceTimeline: AttendanceTimeline;
   currentMenuTab: string = 'user';
   permission: string;
 
@@ -27,12 +29,14 @@ export class UserComponent implements OnInit {
     private barberService: BarberShopService,
     private tokenHelper: TokenHelper,
     private permissionService: PermissionService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.user = new User();
     this.barberShop = new BarberShop();
     this.barberShop.user = new User();
+    this.attedanceTimeline = new AttendanceTimeline();
     this.loadUser();
     this.loadBarberBarber();
     this.permissionService.hasPermission().then((permission) => {
@@ -40,27 +44,27 @@ export class UserComponent implements OnInit {
     })
   }
 
-  loadUser(): void{
+  loadUser(): void {
     this.userService.profile().subscribe((profile) => {
       this.user = profile;
     })
   }
 
-  loadBarberBarber(): void{
-    if(this.tokenHelper.getBarberId()){
+  loadBarberBarber(): void {
+    if (this.tokenHelper.getBarberId()) {
       this.barberService.find(Number(this.tokenHelper.getBarberId())).subscribe((barberShop) => {
         this.barberShop = barberShop;
       })
     }
   }
 
-  changeTab(menu: string): void{
+  changeTab(menu: string): void {
     this.currentMenuTab = menu;
   }
 
-  onSubmit(form: NgForm){
-    if(form.valid){
-      if(this.user && this.currentMenuTab === 'user'){
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      if (this.user && this.currentMenuTab === 'user') {
         this.userService.update(this.user).subscribe((user) => {
           this.loadBarberBarber();
           this.loadUser();
@@ -70,7 +74,7 @@ export class UserComponent implements OnInit {
         })
       }
 
-      if(this.barberShop && this.currentMenuTab === 'barber'){
+      if (this.barberShop && this.currentMenuTab === 'barber') {
         this.barberService.update(this.barberShop).subscribe(() => {
           this.loadBarberBarber();
           this.loadUser();

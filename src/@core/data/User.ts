@@ -1,8 +1,6 @@
-export class User{
-  id: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at: Date;
+import {Default} from "./Default";
+
+export class User extends Default {
   profile: string;
   name: string;
   email: string;
