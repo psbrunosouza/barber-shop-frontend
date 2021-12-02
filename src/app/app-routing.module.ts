@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from '../@layout/register/register.component';
 import { LoginComponent } from '../@layout/login/login.component';
 import {HomeComponent} from "../@layout/home/home.component";
+import {AuthGuard} from "../@core/guards/auth.guard";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -15,7 +16,6 @@ const routes: Routes = [
         (module) => module.DashboardModule
       ),
   },
-
 ];
 
 @NgModule({
