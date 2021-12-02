@@ -20,8 +20,8 @@ export class BarberShopService implements BarberShopServiceModel{
     return this.http.post<BarberShop>(`${this.url}`, barber);
   }
 
-  list(): Observable<BarberShop>{
-    return this.http.get<BarberShop>(`${this.url}`, {
+  list(): Observable<BarberShop[]>{
+    return this.http.get<BarberShop[]>(`${this.url}`, {
       headers: this.httpHeaders
     });
   }

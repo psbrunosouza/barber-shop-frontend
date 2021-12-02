@@ -1,11 +1,8 @@
 import {User} from "./User";
 import {Observable} from "rxjs";
+import {Default} from "./Default";
 
-export class BarberShop {
-  id: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at: Date;
+export class BarberShop extends Default {
   name: string;
   email: string;
   document: string;
@@ -15,8 +12,11 @@ export class BarberShop {
   city: string;
   streetNumber: string;
   user: User;
+  // start: string; TODO: insert new data
+  // end: string;
+  // avg: number;
 }
 
 export abstract class BarberShopServiceModel {
-  abstract create(barber: BarberShop):  Observable<BarberShop>;
+  abstract create(barber: BarberShop): Observable<BarberShop>;
 }
