@@ -17,6 +17,7 @@ import {ModalDialogModule} from "ngx-modal-dialog";
 import { DeletePackageComponent } from './packages/delete-package/delete-package.component';
 import { EditPackageComponent } from './packages/edit-package/edit-package.component';
 import { BarberComponent } from './barber/barber.component';
+import {ChartsModule} from "ng2-charts";
 registerLocaleData(localePt)
 
 @NgModule({
@@ -36,7 +37,8 @@ registerLocaleData(localePt)
       ComponentsModule,
       RouterModule,
       FormsModule,
-      ModalDialogModule
+      ModalDialogModule,
+      ChartsModule
     ],
   providers: [
     TokenHelper,
