@@ -7,7 +7,6 @@ import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
 import {BarberShop} from "../../../@core/data/BarberShop";
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
 import {PermissionService} from "../../../@core/api/permissions/permission.service";
-import {AttendanceTimeline} from "../../../@core/data/AttendanceTimeline";
 
 @Component({
   selector: 'app-user',
@@ -19,7 +18,6 @@ export class UserComponent implements OnInit {
 
   user: User;
   barberShop: BarberShop;
-  attedanceTimeline: AttendanceTimeline;
   currentMenuTab: string = 'user';
   permission: string;
 
@@ -36,7 +34,6 @@ export class UserComponent implements OnInit {
     this.user = new User();
     this.barberShop = new BarberShop();
     this.barberShop.user = new User();
-    this.attedanceTimeline = new AttendanceTimeline();
     this.loadUser();
     this.loadBarberBarber();
     this.permissionService.hasPermission().then((permission) => {
