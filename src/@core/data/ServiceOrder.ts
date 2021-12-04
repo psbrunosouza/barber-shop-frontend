@@ -5,4 +5,5 @@ import {Default} from "./Default";
 export class ServiceOrder extends Default {
   provider: BarberShop;
   packages: Packages[];
+  status: string;
 }

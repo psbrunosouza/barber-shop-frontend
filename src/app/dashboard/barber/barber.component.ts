@@ -24,10 +24,6 @@ export class BarberComponent implements OnInit {
     this.loadBarberShops();
   }
 
-  selectBarberShop(id: number): void {
-    this.router.navigate(['../profile', id], {relativeTo: this.activatedRoute})
-  }
-
   loadBarberShops(): void {
     this.barberShopService.list().subscribe(barberShop => this.barberShops = barberShop)
   }

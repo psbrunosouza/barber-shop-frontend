@@ -6,27 +6,9 @@
     <div class="col-md-12 col-sm-12 col-xl-12 mt-2">
       Encontre o serviço perfeito para seu perfil
     </div>
-
-    <div class="row mt-4 w-100">
-      <div class="col-xl-12 col-md-12 col-sm-12 ">
-        <div class="row gap-3">
-          <button (click)="selectBarberShop(barberShop.id)" *ngFor="let barberShop of barberShops"
-                  class="col-3 gap-3 card ">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="" class="img-fluid rounded-start" alt="">
-              </div>
-              <div class="col-md-8 ">
-                <div class="card-body ">
-                  <h5 class="card-title ">{{barberShop.name}}</h5>
-                  <p class="card-text mb-0"><small class="text-muted">{{barberShop.city}} - {{barberShop.state}}</small>
-                  </p>
-                  <p class="card-text mb-0"><small class="text-muted">{{barberShop.street}}</small></p>
-                </div>
-              </div>
-            </div>
-          </button>
-        </div>
+    <div class="row gap-3 my-3">
+      <div *ngFor="let barberShop of barberShops" class="col-auto">
+        <app-barber-shop-card [barberShop]="barberShop"></app-barber-shop-card>
       </div>
     </div>
   </div>

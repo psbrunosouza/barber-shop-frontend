@@ -19,6 +19,7 @@ import {EditPackageComponent} from './packages/edit-package/edit-package.compone
 import {BarberComponent} from './barber/barber.component';
 import {BarberProfileComponent} from "./barber/barber-profile/barber-profile.component";
 import {ChartsModule} from "ng2-charts";
+import { BarberShopCardComponent } from './barber/barber-shop-card/barber-shop-card.component';
 
 registerLocaleData(localePt)
 
@@ -33,6 +34,7 @@ registerLocaleData(localePt)
     EditPackageComponent,
     BarberComponent,
     BarberProfileComponent,
+    BarberShopCardComponent,
   ],
   imports: [
     CommonModule,

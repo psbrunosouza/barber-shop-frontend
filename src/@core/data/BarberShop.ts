@@ -12,9 +12,11 @@ export class BarberShop extends Default {
   city: string;
   streetNumber: string;
   user: User;
-  // start: string; TODO: insert new data
-  // end: string;
-  // avg: number;
+  opening_hour: number;
+  closing_hour: number;
+  description: string;
+  average_time: number;
+  image: string;
 }
 
 export abstract class BarberShopServiceModel {
