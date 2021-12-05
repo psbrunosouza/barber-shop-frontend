@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../../@core/data/User";
-import {AuthUserService} from "../../@core/api/auth/auth-user.service";
+import {Component, OnInit} from '@angular/core';
+import {User} from "../../../@core/data/User";
+import {AuthUserService} from "../../../@core/api/auth/auth-user.service";
 import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
-import {ToasterHelper} from "../../@core/helpers/toaster.helper";
-import {TokenHelper} from "../../@core/helpers/token.helper";
+import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
+import {TokenHelper} from "../../../@core/helpers/token.helper";
 
 
 @Component({
@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm): void {
-    if(form.valid){
+    if (form.valid) {
       this.authService.login(this.user).subscribe((response) => {
-        if(response.token) this.tokenHelper.setToken(response.token);
+        if (response.token) this.tokenHelper.setToken(response.token);
         this.toaster.showSuccess("Sucesso", `${this.tokenHelper.getUserName()}, Seja bem vindo!`);
         this.router.navigate(["/dashboard"]);
       }, () => {
