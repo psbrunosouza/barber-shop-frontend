@@ -1,11 +1,33 @@
 <div class="row my-4 mx-4">
-  <div class="col-12">
-    <h2>{{barberShop.name}}</h2>
-    <p *ngIf="barberShop" class=" mb-0">
-      <strong>Estado:</strong> {{barberShop.state}} <br/>
-      <strong>Cidade:</strong> {{barberShop.city}} <br/>
-      <strong>Rua:</strong> {{barberShop.street}} <br/>
-      <strong>CEP:</strong> {{barberShop.zipcode}} <br/></p>
+  <div class="card p-3">
+    <div class="row">
+      <div class="col-auto">
+        <div class="row align-items-center ">
+          <div class="d-flex w-100 justify-content-center">
+            <img [src]="barberShop.image" alt="" style="max-width: 152px; max-height: 152px; object-fit: cover">
+          </div>
+          <div class="text-center">
+            <p>Disgraça</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row align-items-center h-100 ">
+        <div class="row">
+          <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Estado:</strong> {{barberShop.state}}</p></div>
+          <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Cidade:</strong> {{barberShop.city}}</p></div>
+          <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Rua:</strong> {{barberShop.street}}</p></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>CEP:</strong> {{barberShop.zipcode}}</p></div>
+          <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>E-mail:</strong> {{barberShop.email}}</p></div>
+          <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>Número:</strong> {{barberShop.streetNumber}}</p></div>
+        </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 
   <h3 class="mt-4">Serviços</h3>
