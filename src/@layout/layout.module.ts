@@ -1,16 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './home/header/header.component';
-import { FooterComponent } from './home/footer/footer.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HomeComponent} from './home/home.component';
+import {HeaderComponent} from './home/header/header.component';
+import {FooterComponent} from './home/footer/footer.component';
 import {RouterModule} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { LayoutComponent } from './layout.component';
-import {ComponentsModule} from "../@components/components.module";
+import {LayoutComponent} from './layout.component';
 import {CustomFormsModule} from "ng2-validation";
-
 
 
 @NgModule({
@@ -28,7 +26,10 @@ import {CustomFormsModule} from "ng2-validation";
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
-    ComponentsModule
   ],
+  exports: [
+    LayoutComponent
+  ]
 })
-export class LayoutModule { }
+export class LayoutModule {
+}

@@ -2,7 +2,6 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {HomeComponent} from './home/home.component';
-import {ComponentsModule} from "../../@components/components.module";
 import {DashboardComponent} from "./dashboard.component";
 import {RouterModule} from "@angular/router";
 import {UserComponent} from './user/user.component';
@@ -19,8 +18,10 @@ import {EditPackageComponent} from './packages/edit-package/edit-package.compone
 import {BarberComponent} from './barber/barber.component';
 import {BarberProfileComponent} from "./barber/barber-profile/barber-profile.component";
 import {ChartsModule} from "ng2-charts";
-import { BarberShopCardComponent } from './barber/barber-shop-card/barber-shop-card.component';
-import { PackageCardComponent } from './packages/package-card/package-card.component';
+import {BarberShopCardComponent} from './barber/barber-shop-card/barber-shop-card.component';
+import {PackageCardComponent} from './packages/package-card/package-card.component';
+import {LayoutModule} from "../../@layout/layout.module";
+import {ThemeModule} from "../../@theme/theme.module";
 
 registerLocaleData(localePt)
 
@@ -41,11 +42,13 @@ registerLocaleData(localePt)
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ComponentsModule,
     RouterModule,
     FormsModule,
     ModalDialogModule,
-    ChartsModule
+    ChartsModule,
+    LayoutModule,
+    ThemeModule
+
   ],
   providers: [
     TokenHelper,

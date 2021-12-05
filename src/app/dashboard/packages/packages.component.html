@@ -9,73 +9,17 @@
       </div>
     </div>
 
-    <form #form="ngForm">
-      <div class="row">
-        <div class="col-md-3 col-xl-3  col-sm-12 mt-2">
-          <div class="form-floating ">
-            <input
-              [(ngModel)]="package.name"
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-              [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
-              #name="ngModel"
-              placeholder="Nome"
-            >
-            <label for="name">Nome</label>
-            <p *ngIf="name.errors?.required && name.dirty" style="color: #DC3545">Campo requerido.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-xl-3  col-sm-12 mt-2">
-          <div class="form-floating ">
-            <input
-              [(ngModel)]="package.value"
-              required
-              name="value"
-              type="text"
-              class="form-control"
-              id="value"
-              [ngClass]="value.errors?.required && value.dirty ? 'is-invalid' : 'is-valid'"
-              #value="ngModel"
-              placeholder="Valor"
-            >
-            <label for="value">Valor</label>
-            <p *ngIf="value.errors?.required && value.dirty" style="color: #DC3545">Campo requerido.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-xl-3 col-sm-12 mt-2">
-          <div class="form-floating ">
-            <input
-              [(ngModel)]="package.description"
-              required
-              name="description"
-              type="text"
-              class="form-control"
-              id="description"
-              [ngClass]="description.errors?.required && description.dirty ? 'is-invalid' : 'is-valid'"
-              #description="ngModel"
-              placeholder="Descrição"
-            >
-            <label for="name">Descrição</label>
-            <p *ngIf="description.errors?.required && description.dirty" style="color: #DC3545">Campo requerido.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-xl-3 col-sm-12 mt-2">
-          <div class="form-group">
-            <button [disabled]='form.invalid' class="btn btn-lg btn-primary" (click)="onSubmit(form)">Salvar</button>
-          </div>
-        </div>
-      </div>
-    </form>
     <div class="my-3 row gap-3">
-      <div class="col-auto p-0">
-        <app-package-card></app-package-card>
-      </div>
+      <app-package-card class="col-sm-12 col-md-3 col-lg-3 m-0 p-0"></app-package-card>
+      <app-package-card class="col-sm-12 col-md-3 col-lg-3 m-0 p-0"></app-package-card>
+      <app-package-card class="col-sm-12 col-md-3 col-lg-3 m-0 p-0"></app-package-card>
+
+      <app-package-card class="col-sm-12 col-md-3 col-lg-3 m-0 p-0"></app-package-card>
+
+      <app-package-card class="col-sm-12 col-md-3 col-lg-3 m-0 p-0"></app-package-card>
+
+      <app-package-card class="col-sm-12 col-md-3 col-lg-3 m-0 p-0"></app-package-card>
+
     </div>
   </div>
 </main>

@@ -1,0 +1,7 @@
+.main {
+  min-height: calc(100vh - 120px);
+}
+
+.dynamically-content {
+  min-width: calc(100% - 76px);
+}

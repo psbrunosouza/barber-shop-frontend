@@ -7,9 +7,12 @@
     <div class="d-flex flex-column">
       <p class="text-muted m-0">Service</p>
       <h4 class="m-0">{{ barberShop.name }}</h4>
-      <p class="content-text m-0">
-        {{ barberShop.description.substr(0, 80) }} <span *ngIf="barberShop.description.length >= 80">...</span>
-      </p>
+      <div class="content-text ">
+        <p class="m-0">
+          {{ barberShop.description.substr(0, 80) }}
+        </p>
+        <span *ngIf="barberShop.description.length >= 80">...</span>
+      </div>
     </div>
 
     <div class="form-group d-flex justify-content-end mt-4">
