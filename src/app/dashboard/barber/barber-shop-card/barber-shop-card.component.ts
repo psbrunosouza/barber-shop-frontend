@@ -1,23 +1,23 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BarberShop} from "../../../../@core/data/BarberShop";
+import {BarberShopModel} from "../../../../@core/data/BarberShopModel";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-    selector: 'app-barber-shop-card',
-    templateUrl: './barber-shop-card.component.html',
-    styleUrls: ['./barber-shop-card.component.css']
+  selector: 'app-barber-shop-card',
+  templateUrl: './barber-shop-card.component.html',
+  styleUrls: ['./barber-shop-card.component.css']
 })
 export class BarberShopCardComponent implements OnInit {
 
-    @Input() barberShop: BarberShop;
+  @Input() barberShop: BarberShopModel;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    selectBarberShop(id: number): void {
-        this.router.navigate(['../profile', id], {relativeTo: this.activatedRoute})
-    }
+  selectBarberShop(id: number): void {
+    this.router.navigate(['../profile', id], {relativeTo: this.activatedRoute})
+  }
 }

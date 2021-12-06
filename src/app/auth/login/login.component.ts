@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../@core/data/User";
+import {UserModel} from "../../../@core/data/UserModel";
 import {AuthUserService} from "../../../@core/api/auth/auth-user.service";
 import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
@@ -14,7 +14,7 @@ import {TokenHelper} from "../../../@core/helpers/token.helper";
   providers: [AuthUserService, TokenHelper, ToasterHelper]
 })
 export class LoginComponent implements OnInit {
-  user!: User;
+  user!: UserModel;
 
   constructor(
     private authService: AuthUserService,
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = new User();
+    this.user = new UserModel();
   }
 
   login(form: NgForm): void {

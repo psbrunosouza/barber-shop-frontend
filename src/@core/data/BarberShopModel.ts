@@ -1,8 +1,8 @@
-import {User} from "./User";
+import {UserModel} from "./UserModel";
 import {Observable} from "rxjs";
-import {Default} from "./Default";
+import {DefaultModel} from "./DefaultModel";
 
-export class BarberShop extends Default {
+export class BarberShopModel extends DefaultModel {
   name: string;
   email: string;
   document: string;
@@ -11,7 +11,7 @@ export class BarberShop extends Default {
   state: string;
   city: string;
   streetNumber: string;
-  user: User;
+  user: UserModel;
   opening_hour: number;
   closing_hour: number;
   description: string;
@@ -20,5 +20,5 @@ export class BarberShop extends Default {
 }
 
 export abstract class BarberShopServiceModel {
-  abstract create(barber: BarberShop): Observable<BarberShop>;
+  abstract create(barber: BarberShopModel): Observable<BarberShopModel>;
 }

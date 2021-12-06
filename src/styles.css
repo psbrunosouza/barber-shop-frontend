@@ -3,10 +3,15 @@
 }
 
 body {
-  overflow-x: hidden;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Readex Pro', sans-serif;
   font-weight: 700;
+}
+
+.main-container {
+  padding: 32px;
+  overflow-x: hidden;
 }

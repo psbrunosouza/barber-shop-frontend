@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {Packages} from "../../../@core/data/Packages";
+import {PackageModel} from "../../../@core/data/PackageModel";
 import {NgForm} from "@angular/forms";
 import {PackageService} from "../../../@core/api/packages/package.service";
 import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
@@ -16,8 +16,8 @@ import {EditPackageComponent} from "./edit-package/edit-package.component";
 })
 export class PackagesComponent implements OnInit {
 
-  package: Packages;
-  packages: Packages[];
+  package: PackageModel;
+  packages: PackageModel[];
 
   constructor(
     private packageService: PackageService,
@@ -25,35 +25,36 @@ export class PackagesComponent implements OnInit {
     private toastHelper: ToasterHelper,
     private modalService: ModalDialogService,
     private viewRef: ViewContainerRef
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    this.package = new Packages();
+    this.package = new PackageModel();
     this.loadPackages();
   }
 
-  loadPackages(){
-    if(this.tokenHelper.getBarberId()) this.packageService.list(Number(this.tokenHelper.getBarberId()))
+  loadPackages() {
+    if (this.tokenHelper.getBarberId()) this.packageService.list(Number(this.tokenHelper.getBarberId()))
       .subscribe((packages) => {
-      this.packages = packages;
-    });
+        this.packages = packages;
+      });
   }
 
-  openDeleteDialog(data: Packages){
-   this.modalService.openDialog(this.viewRef, {
-      title: 'Deletar Pacote',
-      childComponent: DeletePackageComponent,
-      data: data,
-      onClose: () => {
-        this.loadPackages();
-        return true;
+  openDeleteDialog(data: PackageModel) {
+    this.modalService.openDialog(this.viewRef, {
+        title: 'Deletar Pacote',
+        childComponent: DeletePackageComponent,
+        data: data,
+        onClose: () => {
+          this.loadPackages();
+          return true;
+        }
       }
-     }
-   )
+    )
   }
 
 
-  openUpdateDialog(id: number){
+  openUpdateDialog(id: number) {
     this.modalService.openDialog(this.viewRef, {
         title: 'Atualizar Pacote',
         childComponent: EditPackageComponent,
@@ -66,8 +67,8 @@ export class PackagesComponent implements OnInit {
     )
   }
 
-  onSubmit(form: NgForm){
-    if(form.valid){
+  onSubmit(form: NgForm) {
+    if (form.valid) {
       this.packageService.create(this.package).subscribe(() => {
         this.toastHelper.showSuccess("Sucesso", "Serviço criado com sucesso!");
         this.loadPackages();

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
-import {BarberShop} from "../../../@core/data/BarberShop";
+import {BarberShopModel} from "../../../@core/data/BarberShopModel";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BarberComponent implements OnInit {
 
-  barberShops: BarberShop[];
+  barberShops: BarberShopModel[];
 
   constructor(
     private barberShopService: BarberShopService,

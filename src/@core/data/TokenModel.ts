@@ -1,3 +1,3 @@
-class Token {
+class TokenModel {
   token: string;
 }

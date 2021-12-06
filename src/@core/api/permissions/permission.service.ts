@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {User} from "../../data/User";
+import {Injectable} from '@angular/core';
+import {UserModel} from "../../data/UserModel";
 import {UserService} from "../user/user.service";
 
 enum permissions {
@@ -10,14 +10,15 @@ enum permissions {
 @Injectable()
 export class PermissionService {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
 
   async hasPermission(): Promise<string> {
     const data = await this.userService.profile().toPromise();
-    if(data.profile === permissions.BARBER){
+    if (data.profile === permissions.BARBER) {
       return permissions.BARBER;
-    }else{
-      return  permissions.USER;
+    } else {
+      return permissions.USER;
     }
   }
 }

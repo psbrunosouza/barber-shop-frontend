@@ -2,18 +2,21 @@
   <div class="package-card-body">
     <div class="package-image">
       <img
-        src="https://statig3.akamaized.net/bancodeimagens/25/i5/wd/25i5wdyyjak2m5aesf3ilimk0.jpg"
+        [src]="packageModel?.image"
         alt=""/>
     </div>
     <div class="package-content">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      <strong>{{packageModel.name}}</strong>
+      <p class="p-0 m-0">{{packageModel.description}}</p>
+
     </div>
   </div>
   <div class="package-card-footer">
-    <div style="border-right: 1px solid rgba(0, 0, 0, .125)"><p>30min</p></div>
-    <div><p>tag</p></div>
+    <div style="border-right: 1px solid rgba(0, 0, 0, .125)"><p><strong>{{packageModel.time}}min</strong></p></div>
+    <div><p><strong>{{packageModel.tag}}</strong></p></div>
     <div style="border-left: 1px solid rgba(0, 0, 0, .125)">
-      <button type="button" class="btn"><i style="font-size: 22px" class="bi bi-plus"></i></button>
+      <!--      <button type="button" class="btn"><i style="font-size: 22px" class="bi bi-plus"></i></button>-->
+      <strong>{{packageModel.value | currency:'BRL':true }}</strong>
     </div>
   </div>
 </div>

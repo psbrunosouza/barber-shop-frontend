@@ -1,6 +1,5 @@
-<main class="mt-5 mx-4">
-  <div class="row">
-    <form #form="ngForm">
+<div class="row">
+  <form #form="ngForm">
     <div class="col-12">
       <div class="mw-100">
         <h2 style="width: 460px">Olá, {{user.name}}</h2>
@@ -12,46 +11,48 @@
 
     <ul class="nav nav-tabs col-12 mt-4">
       <li class="nav-item">
-        <a class="nav-link" style="cursor: pointer" [ngClass]="currentMenuTab === 'user' ? 'active' : ''"  (click)="changeTab('user')">Usuário</a>
+        <a class="nav-link" style="cursor: pointer" [ngClass]="currentMenuTab === 'user' ? 'active' : ''"
+           (click)="changeTab('user')">Usuário</a>
       </li>
       <li *ngIf="permission === 'barber'" class="nav-item">
-        <a class="nav-link" style="cursor: pointer" [ngClass]="currentMenuTab === 'barber' ? 'active' : ''" (click)="changeTab('barber')">Barbearia</a>
+        <a class="nav-link" style="cursor: pointer" [ngClass]="currentMenuTab === 'barber' ? 'active' : ''"
+           (click)="changeTab('barber')">Barbearia</a>
       </li>
     </ul>
 
     <div *ngIf="currentMenuTab === 'user'" class="mt-3">
-        <div class="form-floating col-md-12 ">
-          <input
-            [(ngModel)]="user.email"
-            disabled
-            name="email"
-            type="email"
-            class="form-control"
-            id="floatingEmail"
-            placeholder="name@example.com"
-            [ngClass]="email.errors?.email && email.dirty ? 'is-invalid' : 'is-valid'"
-            #email="ngModel"
-            email
-          >
-          <label for="floatingEmail">E-mail</label>
-          <p *ngIf="email.errors?.email && email.dirty" style="color: #DC3545">Digite um e-mail válido</p>
-        </div>
+      <div class="form-floating col-md-12 ">
+        <input
+          [(ngModel)]="user.email"
+          disabled
+          name="email"
+          type="email"
+          class="form-control"
+          id="floatingEmail"
+          placeholder="name@example.com"
+          [ngClass]="email.errors?.email && email.dirty ? 'is-invalid' : 'is-valid'"
+          #email="ngModel"
+          email
+        >
+        <label for="floatingEmail">E-mail</label>
+        <p *ngIf="email.errors?.email && email.dirty" style="color: #DC3545">Digite um e-mail válido</p>
+      </div>
 
-        <div class="form-floating col-md-12 mt-3">
-          <input
-            [(ngModel)]="user.name"
-            name="name"
-            type="text"
-            class="form-control"
-            id="floatingName"
-            placeholder="Nome de usuário"
-            [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
-            #name="ngModel"
-            required
-          >
-          <label for="floatingName">Name</label>
-          <p *ngIf="name.errors?.required && name.dirty" style="color: #DC3545">Campo Requerído</p>
-        </div>
+      <div class="form-floating col-md-12 mt-3">
+        <input
+          [(ngModel)]="user.name"
+          name="name"
+          type="text"
+          class="form-control"
+          id="floatingName"
+          placeholder="Nome de usuário"
+          [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
+          #name="ngModel"
+          required
+        >
+        <label for="floatingName">Name</label>
+        <p *ngIf="name.errors?.required && name.dirty" style="color: #DC3545">Campo Requerído</p>
+      </div>
     </div>
 
     <div *ngIf="currentMenuTab === 'barber' && user.profile === 'barber'" class="mt-3">
@@ -188,6 +189,5 @@
     <div class="form-group d-flex justify-content-end mt-2">
       <button [disabled]='form.invalid' class="btn btn-lg btn-primary" (click)="onSubmit(form)">Salvar</button>
     </div>
-    </form>
-  </div>
-</main>
+  </form>
+</div>

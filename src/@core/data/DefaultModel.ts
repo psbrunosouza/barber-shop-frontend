@@ -1,4 +1,4 @@
-export class Default {
+export class DefaultModel {
   id: number;
   created_at: Date;
   updated_at: Date;

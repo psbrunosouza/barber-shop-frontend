@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {BarberShop} from "../../../../@core/data/BarberShop";
+import {BarberShopModel} from "../../../../@core/data/BarberShopModel";
 import {BarberShopService} from "../../../../@core/api/barber/barber-shop.service";
 import {PackageService} from "../../../../@core/api/packages/package.service";
-import {Packages} from "../../../../@core/data/Packages";
-import {ServiceOrder} from "../../../../@core/data/ServiceOrder";
+import {PackageModel} from "../../../../@core/data/PackageModel";
+import {ServiceOrderModel} from "../../../../@core/data/ServiceOrderModel";
 import {ServiceOrderService} from "../../../../@core/api/service-order/service-order.service";
 
 @Component({
@@ -16,10 +16,10 @@ import {ServiceOrderService} from "../../../../@core/api/service-order/service-o
 export class BarberProfileComponent implements OnInit {
 
   barberShopId: number;
-  barberShop: BarberShop;
-  packages: Packages[];
-  cart: Packages[] = [];
-  serviceOrder: ServiceOrder;
+  barberShop: BarberShopModel;
+  packages: PackageModel[];
+  cart: PackageModel[] = [];
+  serviceOrder: ServiceOrderModel;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,9 +30,9 @@ export class BarberProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.barberShop = new BarberShop();
-    this.serviceOrder = new ServiceOrder();
-    this.serviceOrder.provider = new BarberShop();
+    this.barberShop = new BarberShopModel();
+    this.serviceOrder = new ServiceOrderModel();
+    this.serviceOrder.provider = new BarberShopModel();
 
     this.activatedRoute.params.subscribe((param) => {
       this.barberShopId = param['id'];
@@ -41,11 +41,11 @@ export class BarberProfileComponent implements OnInit {
     })
   }
 
-  packageExistsIntoCart(packageModel: Packages): boolean {
+  packageExistsIntoCart(packageModel: PackageModel): boolean {
     return !!this.cart.find(value => value.id === packageModel.id);
   }
 
-  addToCart(packageModel: Packages): void {
+  addToCart(packageModel: PackageModel): void {
     if (!this.packageExistsIntoCart(packageModel)) {
       this.cart = [...this.cart, packageModel];
     }
@@ -55,7 +55,7 @@ export class BarberProfileComponent implements OnInit {
     this.cart = [];
   }
 
-  removeToCart(packageModel: Packages): void {
+  removeToCart(packageModel: PackageModel): void {
     this.cart = this.cart.filter(service => service.id !== packageModel.id);
   }
 

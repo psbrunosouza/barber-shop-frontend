@@ -8,7 +8,7 @@
   "files": [
     "src/main.ts",
     "src/polyfills.ts",
-    "src/@core/data/Token.ts"
+    "src/@core/data/TokenModel.ts"
   ],
   "include": [
     "src/**/*.d.ts"

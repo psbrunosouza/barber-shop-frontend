@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../@core/data/User";
+import {UserModel} from "../../../@core/data/UserModel";
 import {NgForm} from "@angular/forms";
-import {BarberShop} from "../../../@core/data/BarberShop";
+import {BarberShopModel} from "../../../@core/data/BarberShopModel";
 import {AuthUserService} from "../../../@core/api/auth/auth-user.service";
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
 import {Router} from "@angular/router";
@@ -20,8 +20,8 @@ enum PROFILE {
   providers: [AuthUserService, BarberShopService, ToasterHelper, UserService]
 })
 export class RegisterComponent implements OnInit {
-  user: User;
-  barber: BarberShop;
+  user: UserModel;
+  barber: BarberShopModel;
   isBarber: boolean;
 
   constructor(
@@ -33,9 +33,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = new User();
-    this.barber = new BarberShop();
-    this.barber.user = new User();
+    this.user = new UserModel();
+    this.barber = new BarberShopModel();
+    this.barber.user = new UserModel();
   }
 
   register(form: NgForm): void {
