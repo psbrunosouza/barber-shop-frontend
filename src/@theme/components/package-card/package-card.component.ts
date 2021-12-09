@@ -19,6 +19,6 @@ export class PackageCardComponent implements OnInit {
   }
 
   addToCart(packageModel: PackageModel): void {
-    if (!this.cart.find(item => item.id === packageModel.id)) this.cartService.saveCart(packageModel);
+    this.cartService.saveCart(packageModel);
   }
 }
