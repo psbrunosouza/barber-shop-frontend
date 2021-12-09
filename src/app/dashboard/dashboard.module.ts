@@ -19,7 +19,6 @@ import {BarberComponent} from './barber/barber.component';
 import {BarberProfileComponent} from "./barber/barber-profile/barber-profile.component";
 import {ChartsModule} from "ng2-charts";
 import {BarberShopCardComponent} from './barber/barber-shop-card/barber-shop-card.component';
-import {PackageCardComponent} from './packages/package-card/package-card.component';
 import {LayoutModule} from "../../@layout/layout.module";
 import {ThemeModule} from "../../@theme/theme.module";
 
@@ -37,7 +36,6 @@ registerLocaleData(localePt)
     BarberComponent,
     BarberProfileComponent,
     BarberShopCardComponent,
-    PackageCardComponent,
   ],
   imports: [
     CommonModule,

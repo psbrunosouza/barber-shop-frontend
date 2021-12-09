@@ -6,6 +6,7 @@ import {PackageService} from "../../../../@core/api/packages/package.service";
 import {PackageModel} from "../../../../@core/data/PackageModel";
 import {ServiceOrderModel} from "../../../../@core/data/ServiceOrderModel";
 import {ServiceOrderService} from "../../../../@core/api/service-order/service-order.service";
+import {CartService} from "../../../../@core/api/packages/cart.service";
 
 @Component({
   selector: 'app-barber-profile',
@@ -26,6 +27,7 @@ export class BarberProfileComponent implements OnInit {
     private barberShopService: BarberShopService,
     private packageService: PackageService,
     private serviceOrderService: ServiceOrderService,
+    private cartService: CartService
   ) {
   }
 
@@ -39,24 +41,18 @@ export class BarberProfileComponent implements OnInit {
       this.loadBarberShops(this.barberShopId);
       this.loadServices(this.barberShopId);
     })
-  }
 
-  packageExistsIntoCart(packageModel: PackageModel): boolean {
-    return !!this.cart.find(value => value.id === packageModel.id);
-  }
-
-  addToCart(packageModel: PackageModel): void {
-    if (!this.packageExistsIntoCart(packageModel)) {
-      this.cart = [...this.cart, packageModel];
-    }
+    this.cartService.cart$.subscribe((cart) => {
+      this.cart = cart;
+    })
   }
 
   clearCart(): void {
-    this.cart = [];
+    this.cartService.clearCart();
   }
 
-  removeToCart(packageModel: PackageModel): void {
-    this.cart = this.cart.filter(service => service.id !== packageModel.id);
+  removeFromCart(id: number): void {
+    this.cartService.removeFromCartById(id);
   }
 
   loadBarberShops(id: number): void {

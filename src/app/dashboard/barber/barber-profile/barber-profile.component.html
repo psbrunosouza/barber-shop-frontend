@@ -13,17 +13,17 @@
       </div>
       <div class="col">
         <div class="row align-items-center h-100 ">
-        <div class="row">
-          <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Estado:</strong> {{barberShop.state}}</p></div>
-          <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Cidade:</strong> {{barberShop.city}}</p></div>
-          <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Rua:</strong> {{barberShop.street}}</p></div>
-        </div>
+          <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Estado:</strong> {{barberShop.state}}</p></div>
+            <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Cidade:</strong> {{barberShop.city}}</p></div>
+            <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Rua:</strong> {{barberShop.street}}</p></div>
+          </div>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>CEP:</strong> {{barberShop.zipcode}}</p></div>
-          <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>E-mail:</strong> {{barberShop.email}}</p></div>
-          <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>Número:</strong> {{barberShop.streetNumber}}</p></div>
-        </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>CEP:</strong> {{barberShop.zipcode}}</p></div>
+            <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>E-mail:</strong> {{barberShop.email}}</p></div>
+            <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>Número:</strong> {{barberShop.streetNumber}}</p></div>
+          </div>
         </div>
 
       </div>
@@ -31,28 +31,9 @@
   </div>
 
   <h3 class="mt-4">Serviços</h3>
-  <div class="row ">
-    <div class="col-8 gap-3">
-      <div [ngClass]="packageExistsIntoCart(packageModel) ? 'card-selected' : 'card-unselected'"
-           *ngFor="let packageModel of packages"
-           class="card" [style.max-width]="'18rem'">
-        <div class="card-body">
-          <div>
-            <h5>{{packageModel.name}}</h5>
-            <p class="card-text text-muted">{{packageModel.description}}</p>
-          </div>
-          <div class="d-flex mt-4 justify-content-between align-items-center">
-            <span class="badge bg-success align-self-center p-2">{{packageModel.value | currency:'BRL':true}}</span>
-            <div class="d-flex justify-content-center">
-
-              <div>
-                <button (click)="addToCart(packageModel)" class="btn btn-link"><i class="bi bi-plus-circle"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-8">
+      <app-package-card *ngFor="let package of packages" [packageModel]="package"></app-package-card>
     </div>
 
     <div class="col-4">
@@ -78,7 +59,7 @@
               <td>{{ service.description }}</td>
               <td>{{ service.value | currency:'BRL':true }}</td>
               <td>
-                <button class="btn" (click)="removeToCart(service)"><i class="bi bi-dash-circle"></i></button>
+                <button class="btn" (click)="removeFromCart(service.id)"><i class="bi bi-dash-circle"></i></button>
               </td>
             </tr>
             </tbody>

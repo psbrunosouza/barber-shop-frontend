@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
 import {BarberShopModel} from "../../../@core/data/BarberShopModel";
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-barber',
@@ -15,8 +14,6 @@ export class BarberComponent implements OnInit {
 
   constructor(
     private barberShopService: BarberShopService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
   ) {
   }
 
