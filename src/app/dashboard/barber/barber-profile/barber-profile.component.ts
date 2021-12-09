@@ -8,6 +8,12 @@ import {ServiceOrderModel} from "../../../../@core/data/ServiceOrderModel";
 import {ServiceOrderService} from "../../../../@core/api/service-order/service-order.service";
 import {CartService} from "../../../../@core/api/packages/cart.service";
 
+enum SERVICE_STATUS {
+  PENDING = 'pending',
+  CONCLUDED = 'concluded',
+  CANCELED = 'canceled'
+}
+
 @Component({
   selector: 'app-barber-profile',
   templateUrl: './barber-profile.component.html',
@@ -18,9 +24,10 @@ export class BarberProfileComponent implements OnInit {
 
   barberShopId: number;
   barberShop: BarberShopModel;
+  serviceOrder: ServiceOrderModel;
   packages: PackageModel[];
   cart: PackageModel[] = [];
-  serviceOrder: ServiceOrderModel;
+  activeServiceOrders: ServiceOrderModel[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,6 +47,7 @@ export class BarberProfileComponent implements OnInit {
       this.barberShopId = param['id'];
       this.loadBarberShops(this.barberShopId);
       this.loadServices(this.barberShopId);
+      this.loadActiveOrders(this.barberShopId, SERVICE_STATUS.PENDING)
     })
 
     this.cartService.cart$.subscribe((cart) => {
@@ -55,6 +63,12 @@ export class BarberProfileComponent implements OnInit {
     this.cartService.removeFromCartById(id);
   }
 
+  loadActiveOrders(barberId: number, query?: string): void {
+    this.serviceOrderService.list(barberId, query).subscribe((activeServiceOrders) => {
+      this.activeServiceOrders = activeServiceOrders;
+    })
+  }
+
   loadBarberShops(id: number): void {
     this.barberShopService.find(id).subscribe(barberShop => this.barberShop = barberShop)
   }
@@ -63,12 +77,13 @@ export class BarberProfileComponent implements OnInit {
     this.packageService.list(id).subscribe(service => this.packages = service)
   }
 
-  onCreate() {
+  contractService() {
     this.serviceOrder.packages = this.cart;
     this.serviceOrder.provider.id = this.barberShopId;
 
+
     this.serviceOrderService.create(this.serviceOrder).subscribe((serviceOrder) => {
-      console.log(serviceOrder);
+      console.log(serviceOrder)
     })
   }
 }

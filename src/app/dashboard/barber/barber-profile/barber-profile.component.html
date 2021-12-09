@@ -37,10 +37,15 @@
     </div>
 
     <div class="col-auto m-0 p-0">
-      <div class="card" style="height: 460px;  width: 28rem;">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title">Atendimentos em Andamento</h5>
+        </div>
+      </div>
+      <div class="card" [style.height.px]="260" [style.max-width]="'28em'">
         <img class="card-img-top" src="" alt="">
-        <div class="card-body" [style.overflow-y]="'scroll'" style="height: 460px;">
-          <h5 class="card-title">Serviços adicionados</h5>
+        <div class="card-body" [style.overflow-y]="'scroll'" [style.height.px]="260">
+          <h5 class="card-title">Serviços Adicionados</h5>
           <table class="table">
             <thead>
             <tr>
@@ -70,7 +75,7 @@
               <button (click)="clearCart()" class="btn">Limpar</button>
             </div>
             <div>
-              <button (click)="onCreate()" class="btn btn-primary" href="#">Contratar</button>
+              <button (click)="contractService()" class="btn btn-primary" href="#">Contratar</button>
             </div>
           </div>
         </div>
