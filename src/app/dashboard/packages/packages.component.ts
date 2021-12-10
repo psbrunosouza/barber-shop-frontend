@@ -7,6 +7,7 @@ import {TokenHelper} from "../../../@core/helpers/token.helper";
 import {ModalDialogService} from "ngx-modal-dialog";
 import {DeletePackageComponent} from "./delete-package/delete-package.component";
 import {EditPackageComponent} from "./edit-package/edit-package.component";
+import {PackageListService} from "./package-list.service";
 
 @Component({
   selector: 'app-packages',
@@ -23,14 +24,17 @@ export class PackagesComponent implements OnInit {
     private packageService: PackageService,
     private tokenHelper: TokenHelper,
     private toastHelper: ToasterHelper,
-    private modalService: ModalDialogService,
-    private viewRef: ViewContainerRef
+    private serviceList: PackageListService
   ) {
   }
 
   ngOnInit(): void {
     this.package = new PackageModel();
     this.loadPackages();
+
+    this.serviceList.refreshPackageList$.subscribe(() => {
+      this.loadPackages();
+    })
   }
 
   loadPackages() {
@@ -40,32 +44,6 @@ export class PackagesComponent implements OnInit {
       });
   }
 
-  openDeleteDialog(data: PackageModel) {
-    this.modalService.openDialog(this.viewRef, {
-        title: 'Deletar Pacote',
-        childComponent: DeletePackageComponent,
-        data: data,
-        onClose: () => {
-          this.loadPackages();
-          return true;
-        }
-      }
-    )
-  }
-
-
-  openUpdateDialog(id: number) {
-    this.modalService.openDialog(this.viewRef, {
-        title: 'Atualizar Pacote',
-        childComponent: EditPackageComponent,
-        data: id,
-        onClose: () => {
-          this.loadPackages();
-          return true;
-        }
-      }
-    )
-  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {

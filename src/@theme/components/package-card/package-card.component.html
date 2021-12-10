@@ -1,48 +1,48 @@
-<div class="package-card">
-  <div class="row package-header">
-    <div class="col">
-    </div>
-    <div class="text-center col">
-      <strong>Serviço</strong>
-    </div>
-    <div class="text-center col">
-      <strong>Descrição</strong>
-    </div>
-    <div class="text-center col">
-      <strong>Tag</strong>
-    </div>
-    <div class="text-center col">
-      <strong>Tempo Médio</strong>
-    </div>
-    <div class="text-center col">
-      <strong>Preço</strong>
-    </div>
-    <div class="text-center col">
-      <strong>Ações</strong>
+<div class="package-card row">
+  <div class="card-item card-image-container col">
+    <img class="card-image" [src]="packageModel.image" alt=""/>
+  </div>
+  <div class="card-item col">
+    <div class="header text-center">Serviço</div>
+    <div class="body">
+      {{packageModel.name}}
     </div>
   </div>
-  <div class="row package-body">
-    <div class="package-container col">
-      <img class="package-image" [src]="packageModel?.image" alt=""/>
+  <div class="card-item col">
+    <div class="header text-center">Descrição</div>
+    <div class="body">
+      {{packageModel.description}}
     </div>
-    <div class="text-center col">
-      {{ packageModel.name }}
-    </div>
-    <div class="text-center col">
-      {{ packageModel.description}}
-    </div>
-    <div class="text-center col">
+  </div>
+  <div class="card-item  col">
+    <div class="header text-center">Tag</div>
+    <div class="body">
       {{packageModel.tag}}
     </div>
-    <div class="text-center col">
+  </div>
+  <div class="card-item  col">
+    <div class="header text-center">Tempo Médio</div>
+    <div class="body">
       {{packageModel.time}}min
     </div>
-    <div class="text-center col">
-      {{packageModel.value | currency : 'BRL' : true }}
+  </div>
+  <div class="card-item col">
+    <div class="header text-center">Valor</div>
+    <div class="body">
+      {{packageModel.value | currency : 'BRL' : true}}
     </div>
-    <div class="text-center col">
-      <button (click)="addToCart(packageModel)" class="btn btn-primary" [style.border-radius]="'50%'">
-        <i style="font-size: 22px" class="bi bi-plus"></i>
+  </div>
+  <div class="card-item col">
+    <div class="header text-center">Ações</div>
+    <div class="body">
+      <button *ngIf="canAdd" (click)="addToCart(packageModel)" class="btn "><i
+        class="bi bi-plus-circle-fill fs-2 text-primary"></i>
+      </button>
+      <button *ngIf="canEdit" (click)="openUpdateDialog(packageModel.id)" class="btn "><i
+        class="bi fs-2 text-primary  bi-pencil-fill"></i>
+      </button>
+      <button *ngIf="canDelete" (click)="openDeleteDialog(packageModel)" class="btn "><i
+        class="bi fs-2 text-danger  bi-trash-fill"></i>
       </button>
     </div>
   </div>

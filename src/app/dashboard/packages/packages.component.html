@@ -8,13 +8,14 @@
     </div>
   </div>
 
-  <div class="my-3 row gap-3">
+  <div class="my-3 row gap-2">
     <app-package-card
+      [canDelete]="true" [canEdit]="true"
       *ngFor="let package of packages"
       [packageModel]="package"
-      class="col-sm-12 col-md-12 col-lg-3 m-0 p-0">
-
+      class="col-12 ">
     </app-package-card>
+
   </div>
 </div>
 

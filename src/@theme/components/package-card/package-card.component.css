@@ -15,43 +15,35 @@
   transform: translate(8px, 0);
 }
 
-.package-header {
+.card-item {
+  width: inherit;
+  height: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.card-item .header {
   height: 30%;
-  width: 100%;
+  width: inherit;
   border-bottom: 1px solid rgba(0, 0, 0, .125);
   padding: 0;
   margin: 0;
-}
-
-.package-header div {
   border-left: 1px solid rgba(0, 0, 0, .125);
-  padding: 0;
-  margin: 0;
 }
 
-.package-header div:first-child {
-  border-left: none;
-}
-
-.package-body {
+.card-item .body {
   height: 70%;
-  width: 100%;
+  width: inherit;
   padding: 0;
   margin: 0;
-}
 
-.package-body div {
-  height: 100%;
-  padding: 0;
-  margin: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-.package-container .package-image {
-  object-fit: cover;
+.card-image-container, .card-image {
   width: 100%;
   height: 100%;
-  border-bottom-left-radius: 5px;
+  object-fit: cover;
 }

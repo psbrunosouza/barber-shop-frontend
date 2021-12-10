@@ -15,12 +15,12 @@ enum SERVICE_STATUS {
 }
 
 @Component({
-  selector: 'app-barber-profile',
-  templateUrl: './barber-profile.component.html',
-  styleUrls: ['./barber-profile.component.css'],
+  selector: 'app-barber-details',
+  templateUrl: './barber-details.component.html',
+  styleUrls: ['./barber-details.component.css'],
   providers: [BarberShopService, PackageService, ServiceOrderService]
 })
-export class BarberProfileComponent implements OnInit {
+export class BarberDetailsComponent implements OnInit {
 
   barberShopId: number;
   barberShop: BarberShopModel;

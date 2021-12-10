@@ -32,11 +32,12 @@
 
   <h3 class="mt-4">Serviços</h3>
   <div class="row m-0 p-0">
-    <div class="col ">
-      <app-package-card *ngFor="let package of packages" [packageModel]="package"></app-package-card>
+    <div class="col">
+      <app-package-card [canAdd]="true" *ngFor="let package of packages"
+                        [packageModel]="package"></app-package-card>
     </div>
 
-    <div class="col-auto ">
+    <div class="col-auto">
       <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title">Atendimentos em Andamento</h5>

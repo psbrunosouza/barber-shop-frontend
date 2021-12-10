@@ -16,11 +16,12 @@ import {ModalDialogModule} from "ngx-modal-dialog";
 import {DeletePackageComponent} from './packages/delete-package/delete-package.component';
 import {EditPackageComponent} from './packages/edit-package/edit-package.component';
 import {BarberComponent} from './barber/barber.component';
-import {BarberProfileComponent} from "./barber/barber-profile/barber-profile.component";
+import {BarberDetailsComponent} from "./barber/barber-details/barber-details.component";
 import {ChartsModule} from "ng2-charts";
 import {BarberShopCardComponent} from './barber/barber-shop-card/barber-shop-card.component';
 import {LayoutModule} from "../../@layout/layout.module";
 import {ThemeModule} from "../../@theme/theme.module";
+import { BarberContractServiceComponent } from './barber/barber-details/barber-contract-service/barber-contract-service.component';
 
 registerLocaleData(localePt)
 
@@ -34,8 +35,9 @@ registerLocaleData(localePt)
     DeletePackageComponent,
     EditPackageComponent,
     BarberComponent,
-    BarberProfileComponent,
+    BarberDetailsComponent,
     BarberShopCardComponent,
+    BarberContractServiceComponent,
   ],
   imports: [
     CommonModule,
