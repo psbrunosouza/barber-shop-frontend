@@ -6,4 +6,6 @@ export class ServiceOrderModel extends DefaultModel {
   provider: BarberShopModel;
   packages: PackageModel[];
   status: string;
+  initial_service_time: Date;
+  final_service_time: Date;
 }

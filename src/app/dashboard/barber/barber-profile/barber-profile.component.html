@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-auto">
         <div class="row align-items-center ">
-          <div class="d-flex w-100 justify-content-center">
+          <div class="barbershop-image d-flex w-100 justify-content-center">
             <img [src]="barberShop.image" alt="" style="max-width: 152px; max-height: 152px; object-fit: cover">
           </div>
           <div class="text-center">
-            <p>Disgraça</p>
+            <strong>{{barberShop.name}}</strong>
           </div>
         </div>
       </div>
@@ -32,14 +32,32 @@
 
   <h3 class="mt-4">Serviços</h3>
   <div class="row m-0 p-0">
-    <div class="col m-0 p-0">
+    <div class="col ">
       <app-package-card *ngFor="let package of packages" [packageModel]="package"></app-package-card>
     </div>
 
-    <div class="col-auto m-0 p-0">
+    <div class="col-auto ">
       <div class="card mb-2">
         <div class="card-body">
           <h5 class="card-title">Atendimentos em Andamento</h5>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Status</th>
+              <th scope="col">Início</th>
+              <th scope="col">Fim</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let activeServiceOrders of activeServiceOrders; let i = index">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{ activeServiceOrders.status }}</td>
+              <td>{{ activeServiceOrders.initial_service_time | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ activeServiceOrders.final_service_time | date: 'dd/MM/yyyy' }}</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="card" [style.height.px]="260" [style.max-width]="'28em'">

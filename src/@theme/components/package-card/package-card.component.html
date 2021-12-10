@@ -1,22 +1,49 @@
 <div class="package-card">
-  <div class="package-card-body">
-    <div class="package-image">
-      <img
-        [src]="packageModel?.image"
-        alt=""/>
+  <div class="row package-header">
+    <div class="col">
     </div>
-    <div class="package-content">
-      <strong>{{packageModel.name}}</strong>
-      <p class="p-0 m-0">{{packageModel.description}}</p>
-      <strong>{{packageModel.value | currency:'BRL':true }}</strong>
+    <div class="text-center col">
+      <strong>Serviço</strong>
+    </div>
+    <div class="text-center col">
+      <strong>Descrição</strong>
+    </div>
+    <div class="text-center col">
+      <strong>Tag</strong>
+    </div>
+    <div class="text-center col">
+      <strong>Tempo Médio</strong>
+    </div>
+    <div class="text-center col">
+      <strong>Preço</strong>
+    </div>
+    <div class="text-center col">
+      <strong>Ações</strong>
     </div>
   </div>
-  <div class="package-card-footer">
-    <div style="border-right: 1px solid rgba(0, 0, 0, .125)"><p><strong>{{packageModel.time}}min</strong></p></div>
-    <div><p><strong>{{packageModel.tag}}</strong></p></div>
-    <div style="border-left: 1px solid rgba(0, 0, 0, .125)">
-      <button type="button" (click)="addToCart(packageModel)" class="btn"><i style="font-size: 22px"
-                                                                             class="bi bi-plus"></i></button>
+  <div class="row package-body">
+    <div class="package-container col">
+      <img class="package-image" [src]="packageModel?.image" alt=""/>
+    </div>
+    <div class="text-center col">
+      {{ packageModel.name }}
+    </div>
+    <div class="text-center col">
+      {{ packageModel.description}}
+    </div>
+    <div class="text-center col">
+      {{packageModel.tag}}
+    </div>
+    <div class="text-center col">
+      {{packageModel.time}}min
+    </div>
+    <div class="text-center col">
+      {{packageModel.value | currency : 'BRL' : true }}
+    </div>
+    <div class="text-center col">
+      <button (click)="addToCart(packageModel)" class="btn btn-primary" [style.border-radius]="'50%'">
+        <i style="font-size: 22px" class="bi bi-plus"></i>
+      </button>
     </div>
   </div>
 </div>
