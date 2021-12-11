@@ -10,7 +10,7 @@
           name="image"
           class="form-control"
           type="text"
-          [(ngModel)]="data.image"
+          [(ngModel)]="packageModel.image"
         />
         <p *ngIf="image.errors?.required && image.dirty" style="color: #DC3545">Campo requerido.</p>
       </div>
@@ -23,7 +23,7 @@
           name="name"
           class="form-control"
           type="text"
-          [(ngModel)]="data.name"
+          [(ngModel)]="packageModel.name"
           required
           [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
           #name="ngModel"
@@ -42,7 +42,7 @@
           name="tag"
           class="form-control"
           type="text"
-          [(ngModel)]="data.tag"
+          [(ngModel)]="packageModel.tag"
         />
         <p *ngIf="tag.errors?.required && tag.dirty" style="color: #DC3545">Campo requerido.</p>
       </div>
@@ -59,7 +59,7 @@
           name="time"
           class="form-control"
           type="text"
-          [(ngModel)]="data.time"
+          [(ngModel)]="packageModel.time"
         />
         <p *ngIf="time.errors?.required && time.dirty" style="color: #DC3545">Campo requerido.</p>
       </div>
@@ -75,7 +75,7 @@
           name="description"
           class="form-control"
           type="text"
-          [(ngModel)]="data.description"
+          [(ngModel)]="packageModel.description"
         />
         <p *ngIf="description.errors?.required && description.dirty" style="color: #DC3545">Campo requerido.</p>
       </div>
@@ -88,7 +88,7 @@
           required
           [ngClass]="value.errors?.required && value.dirty ? 'is-invalid' : 'is-valid'"
           #value="ngModel"
-          name="value" class="form-control" type="text" [(ngModel)]="data.value"/>
+          name="value" class="form-control" type="text" [(ngModel)]="packageModel.value"/>
         <p *ngIf="value.errors?.required && value.dirty" style="color: #DC3545">Campo requerido.</p>
       </div>
     </div>
@@ -97,8 +97,7 @@
         <button (click)="cancel()" class=" btn ">Cancelar</button>
       </div>
       <div class="mt-3 d-flex justify-content-end">
-        <button [disabled]="form.invalid" (click)="onUpdate(data.id, data, form)" class=" btn btn-primary">Salvar
-        </button>
+        <button [disabled]="form.invalid" (click)="onSave()" class=" btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>

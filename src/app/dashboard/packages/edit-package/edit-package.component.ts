@@ -1,4 +1,4 @@
-import {Component, ComponentRef, OnInit} from '@angular/core';
+import {Component, ComponentRef, OnDestroy, OnInit} from '@angular/core';
 import {IModalDialog, IModalDialogOptions} from "ngx-modal-dialog";
 import {PackageModel} from "../../../../@core/data/PackageModel";
 import {PackageService} from "../../../../@core/api/packages/package.service";
@@ -26,7 +26,7 @@ export class EditPackageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.data = new PackageModel();
   }
 
   dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<any>>) {
@@ -61,5 +61,4 @@ export class EditPackageComponent implements OnInit {
       form.reset();
     })
   }
-
 }

@@ -1,13 +1,12 @@
-import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {PackageModel} from "../../../@core/data/PackageModel";
-import {NgForm} from "@angular/forms";
 import {PackageService} from "../../../@core/api/packages/package.service";
 import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
 import {TokenHelper} from "../../../@core/helpers/token.helper";
-import {ModalDialogService} from "ngx-modal-dialog";
-import {DeletePackageComponent} from "./delete-package/delete-package.component";
-import {EditPackageComponent} from "./edit-package/edit-package.component";
 import {PackageListService} from "./package-list.service";
+import {DeletePackageComponent} from "./delete-package/delete-package.component";
+import {ModalDialogService} from "ngx-modal-dialog";
+import {AddPackageComponent} from "./add-package/add-package.component";
 
 @Component({
   selector: 'app-packages',
@@ -24,11 +23,16 @@ export class PackagesComponent implements OnInit {
     private packageService: PackageService,
     private tokenHelper: TokenHelper,
     private toastHelper: ToasterHelper,
-    private serviceList: PackageListService
+    private serviceList: PackageListService,
+    private modalService: ModalDialogService,
+    private viewRef: ViewContainerRef,
+    private packageListService: PackageListService,
   ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit()
+    :
+    void {
     this.package = new PackageModel();
     this.loadPackages();
 
@@ -37,26 +41,22 @@ export class PackagesComponent implements OnInit {
     })
   }
 
+  openAddDialog() {
+    this.modalService.openDialog(this.viewRef, {
+        title: 'Adicionar Pacote',
+        childComponent: AddPackageComponent,
+        onClose: () => {
+          this.packageListService.handleRefreshPackageList()
+          return true;
+        }
+      }
+    )
+  }
+
   loadPackages() {
     if (this.tokenHelper.getBarberId()) this.packageService.list(Number(this.tokenHelper.getBarberId()))
       .subscribe((packages) => {
         this.packages = packages;
       });
   }
-
-
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      this.packageService.create(this.package).subscribe(() => {
-        this.toastHelper.showSuccess("Sucesso", "Serviço criado com sucesso!");
-        this.loadPackages();
-        form.reset();
-      }, () => {
-        this.toastHelper.showError("Erro", "Erro durante a criação do serviço, tente novamente!")
-        this.loadPackages()
-        form.reset();
-      })
-    }
-  }
-
 }
