@@ -8,7 +8,7 @@ import {AuthGuard} from '../../@core/guards/auth.guard';
 import {PackagesComponent} from './packages/packages.component';
 import {ScheduleComponent} from './schedule/schedule.component';
 import {BarberComponent} from "./barber/barber.component";
-import {BarberProfileComponent} from "./barber/barber-profile/barber-profile.component";
+import {BarberDetailsComponent} from "./barber/barber-details/barber-details.component";
 
 const routes: Routes = [
   {
@@ -43,7 +43,7 @@ const routes: Routes = [
       },
       {
         path: 'profile/:id',
-        component: BarberProfileComponent,
+        component: BarberDetailsComponent,
         canActivate: [AuthGuard]
       },
     ],

@@ -1,6 +1,6 @@
 <section class="mt-5 py-5 container-fluid login">
   <div class="my-3 py-3 text-center">
-    <img class="cadastro  mb-3" src="../../assets/img/cadastro.svg" alt="">
+    <img class="cadastro  mb-3" src="../../../assets/img/cadastro.svg" alt="">
     <h3 class=" justify-content-center">Cadastro de Clientes</h3>
   </div>
   <form #form="ngForm">
@@ -48,7 +48,8 @@
           class="form-control"
           id="password"
         >
-        <p *ngIf="fieldPassword.errors?.minlength  && fieldPassword.dirty " style="color: #DC3545">Password deve conter no mínimo 8 dígitos</p>
+        <p *ngIf="fieldPassword.errors?.minlength  && fieldPassword.dirty " style="color: #DC3545">Password deve conter
+          no mínimo 8 dígitos</p>
       </div>
 
       <div class="col-4 mt-3" *ngIf="isBarber">
@@ -69,6 +70,93 @@
         </div>
 
         <div class="col-12">
+          <label for="barber_description" class="form-label">Descrição</label>
+          <input
+            [ngClass]="barber_description.errors?.required && barber_description.dirty ? 'is-invalid' : 'is-valid'"
+            #barber_description="ngModel"
+            required
+            [(ngModel)]="barber.description"
+            name="barber_description"
+            placeHolder="Descrição"
+            type="text"
+            class="form-control"
+            id="barber_description"
+          >
+          <p *ngIf="barber_description.errors?.required && barber_description.dirty" style="color: #DC3545">Campo
+            requerído</p>
+        </div>
+
+        <div class="col-12">
+          <label for="logo" class="form-label">Logo</label>
+          <input
+            [ngClass]="logo.errors?.required && logo.dirty ? 'is-invalid' : 'is-valid'"
+            #logo="ngModel"
+            required
+            [(ngModel)]="barber.image"
+            name="logo"
+            placeHolder="Logo"
+            type="text"
+            class="form-control"
+            id="logo"
+          >
+          <p *ngIf="logo.errors?.required && logo.dirty" style="color: #DC3545">Campo
+            requerído</p>
+        </div>
+
+        <div class="row">
+          <div class="col-4 mr-2">
+            <label for="document" class="form-label">Abertura</label>
+            <input
+              required
+              number
+              [ngClass]="opening_hour.errors?.required && opening_hour.dirty ? 'is-invalid' : 'is-valid'"
+              #opening_hour="ngModel"
+              [(ngModel)]="barber.opening_hour"
+              name="opening_hour"
+              placeHolder="Abertura"
+              type="number"
+              class="form-control"
+              id="opening_hour"
+            >
+            <p *ngIf="opening_hour.errors?.required && opening_hour.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
+
+          <div class="col-4 mr-2 ml-2">
+            <label for="closing_hour" class="form-label">Fechamento</label>
+            <input
+              required
+              number
+              [ngClass]="closing_hour.errors?.required && closing_hour.dirty ? 'is-invalid' : 'is-valid'"
+              #closing_hour="ngModel"
+              [(ngModel)]="barber.closing_hour"
+              name="closing_hour"
+              placeHolder="Fechamento"
+              type="number"
+              class="form-control"
+              id="closing_hour"
+            >
+            <p *ngIf="closing_hour.errors?.required && closing_hour.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
+
+          <div class="col-4 ml-2">
+            <label for="average_time" class="form-label">Tempo Médio</label>
+            <input
+              required
+              number
+              [ngClass]="average_time.errors?.required && average_time.dirty ? 'is-invalid' : 'is-valid'"
+              #average_time="ngModel"
+              [(ngModel)]="barber.average_time"
+              name="average_time"
+              placeHolder="Tempo Médio"
+              type="number"
+              class="form-control"
+              id="average_time"
+            >
+            <p *ngIf="average_time.errors?.required && average_time.dirty" style="color: #DC3545">Campo requerído</p>
+          </div>
+        </div>
+
+        <div class="col-12">
           <label for="barberEmail" class="form-label">E-mail da Barbearia</label>
           <input
             email
@@ -81,7 +169,8 @@
             class="form-control"
             id="barberEmail"
           >
-          <p *ngIf="fieldEmailBarber.errors?.email && fieldEmailBarber.dirty" style="color: #DC3545">Digite um e-mail válido!</p>
+          <p *ngIf="fieldEmailBarber.errors?.email && fieldEmailBarber.dirty" style="color: #DC3545">Digite um e-mail
+            válido!</p>
         </div>
 
         <div class="row">
@@ -149,7 +238,7 @@
         </div>
 
         <div class="row">
-          <div class="col-6" >
+          <div class="col-6">
             <label for="state" class="form-label">Estado</label>
             <input
               required
@@ -178,7 +267,7 @@
               class="form-control"
               id="city"
             >
-              <p *ngIf="city.errors?.required && city.dirty" style="color: #DC3545">Campo requerído</p>
+            <p *ngIf="city.errors?.required && city.dirty" style="color: #DC3545">Campo requerído</p>
           </div>
         </div>
       </div>
@@ -186,21 +275,21 @@
       <div class="col-4 mt-3 d-flex justify-content-end">
         <div class="form-check form-switch">
           <label class="form-check-label pull-right" for="flexSwitchCheckDefault">Sou uma Barbearia</label>
-          <input name="isBarber" [(ngModel)]="isBarber" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+          <input name="isBarber" [(ngModel)]="isBarber" class="form-check-input" type="checkbox"
+                 id="flexSwitchCheckDefault">
         </div>
       </div>
 
       <div class="col-4 mt-3 d-flex flex-column align-items-center">
         <div class="col-12">
-          <Button type="submit" [disabled]="form.invalid" (click)="register(form)" style="width: 100%" class="btn btn-primary" >Cadastrar</Button>
+          <Button type="submit" [disabled]="form.invalid" (click)="register(form)" style="width: 100%"
+                  class="btn btn-primary">Cadastrar
+          </Button>
         </div>
 
         <ul class="mt-3 flex-column d-flex align-items-center list-unstyled">
           <li class="p-1">
-            <a class="text-decoration-none text-center" routerLink="#">Esqueci a senha</a>
-          </li>
-          <li class="p-1">
-            <a class="text-decoration-none text-center" routerLink="/login">Retornar ao Login</a>
+            <a class="text-decoration-none text-center" routerLink="/auth/login">Retornar ao Login</a>
           </li>
         </ul>
       </div>

@@ -1,109 +1,26 @@
-<main class="mt-5 mx-4">
-  <div class="row">
-    <div class="col-12">
-      <div class="mw-100">
-        <h2 style="width: 460px">Serviços</h2>
-      </div>
-      <div class="mw-100 mt-2">
-        Gerencie os serviços cadastrados
-      </div>
+<div class="row">
+  <div class="col-12">
+    <div class="mw-100">
+      <h2 style="width: 460px">Serviços</h2>
     </div>
-
-    <form #form="ngForm">
-      <div class="row">
-        <div class="col-md-3 col-xl-3  col-sm-12 mt-2">
-          <div class="form-floating ">
-            <input
-              [(ngModel)]="package.name"
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-              [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
-              #name="ngModel"
-              placeholder="Nome"
-            >
-            <label for="name">Nome</label>
-            <p *ngIf="name.errors?.required && name.dirty" style="color: #DC3545">Campo requerido.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-xl-3  col-sm-12 mt-2">
-          <div class="form-floating ">
-            <input
-              [(ngModel)]="package.value"
-              required
-              name="value"
-              type="text"
-              class="form-control"
-              id="value"
-              [ngClass]="value.errors?.required && value.dirty ? 'is-invalid' : 'is-valid'"
-              #value="ngModel"
-              placeholder="Valor"
-            >
-            <label for="value">Valor</label>
-            <p *ngIf="value.errors?.required && value.dirty" style="color: #DC3545">Campo requerido.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-xl-3 col-sm-12 mt-2">
-          <div class="form-floating ">
-            <input
-              [(ngModel)]="package.description"
-              required
-              name="description"
-              type="text"
-              class="form-control"
-              id="description"
-              [ngClass]="description.errors?.required && description.dirty ? 'is-invalid' : 'is-valid'"
-              #description="ngModel"
-              placeholder="Descrição"
-            >
-            <label for="name">Descrição</label>
-            <p *ngIf="description.errors?.required && description.dirty" style="color: #DC3545">Campo requerido.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-xl-3 col-sm-12 mt-2">
-          <div class="form-group">
-            <button [disabled]='form.invalid' class="btn btn-lg btn-primary" (click)="onSubmit(form)">Salvar</button>
-          </div>
-        </div>
-      </div>
-    </form>
-    <div class="mt-3 row">
-      <div class="col-md-12 col-sm-12" style="width: 24rem" *ngFor="let packageModel of packages">
-        <div class="card card-package g-4 mt-3">
-          <div class="card-body">
-            <div>
-              <h5>{{packageModel.name}}</h5>
-              <p class="card-text">{{packageModel.description}}</p>
-            </div>
-
-            <div class="d-flex justify-content-between">
-              <span class="badge bg-success align-self-center p-2">{{packageModel.value | currency:'BRL':true}}</span>
-              <div class="d-flex justify-content-between">
-                <button
-                  class="btn btn-sm btn-link"
-                  (click)="openUpdateDialog(packageModel.id)"
-                >
-                  <i style="font-size: 24px;" class="text-primary bi bi-pencil-fill"></i>
-                </button>
-                <button
-                  class="btn btn-sm btn-link"
-                  (click)="openDeleteDialog(packageModel)"
-                >
-                  <i style="font-size: 24px;" class="text-danger bi bi-trash-fill"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="mw-100 mt-2">
+      Gerencie os serviços cadastrados
     </div>
   </div>
-</main>
+
+  <div class="my-3 row gap-2">
+    <div class="d-flex justify-content-end">
+      <button (click)="openAddDialog()" class="btn btn-primary">Adicionar Serviço</button>
+    </div>
+    <app-package-card
+      [canDelete]="true" [canEdit]="true"
+      *ngFor="let package of packages"
+      [packageModel]="package"
+      class="col-12 ">
+    </app-package-card>
+
+  </div>
+</div>
 
 
 

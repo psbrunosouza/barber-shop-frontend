@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {User} from "../../@core/data/User";
+import {Component, OnInit} from '@angular/core';
+import {UserModel} from "../../../@core/data/UserModel";
 import {NgForm} from "@angular/forms";
-import {BarberShop} from "../../@core/data/BarberShop";
-import {AuthUserService} from "../../@core/api/auth/auth-user.service";
-import {BarberShopService} from "../../@core/api/barber/barber-shop.service";
+import {BarberShopModel} from "../../../@core/data/BarberShopModel";
+import {AuthUserService} from "../../../@core/api/auth/auth-user.service";
+import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
 import {Router} from "@angular/router";
-import {ToasterHelper} from "../../@core/helpers/toaster.helper";
-import {UserService} from "../../@core/api/user/user.service";
+import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
+import {UserService} from "../../../@core/api/user/user.service";
 
 enum PROFILE {
   USER = "user",
@@ -17,11 +17,11 @@ enum PROFILE {
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [AuthUserService, BarberShopService, ToasterHelper, UserService  ]
+  providers: [AuthUserService, BarberShopService, ToasterHelper, UserService]
 })
 export class RegisterComponent implements OnInit {
-  user: User;
-  barber: BarberShop;
+  user: UserModel;
+  barber: BarberShopModel;
   isBarber: boolean;
 
   constructor(
@@ -29,31 +29,32 @@ export class RegisterComponent implements OnInit {
     private barberShopService: BarberShopService,
     private router: Router,
     private toasterHelper: ToasterHelper
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    this.user = new User();
-    this.barber = new BarberShop();
-    this.barber.user = new User();
+    this.user = new UserModel();
+    this.barber = new BarberShopModel();
+    this.barber.user = new UserModel();
   }
 
   register(form: NgForm): void {
-    if(form.valid){
-      if(!this.isBarber){
+    if (form.valid) {
+      if (!this.isBarber) {
         this.user.profile = PROFILE.USER;
         this.userService.create(this.user).subscribe(response => {
           this.toasterHelper.showSuccess('Sucesso', 'Cadastro realizado com sucesso!');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         }, () => {
           this.toasterHelper.showError('Erro', 'Erro ao realizar o cadastro!');
         });
-      }else{
+      } else {
         this.user.profile = PROFILE.BARBER;
         this.userService.create(this.user).subscribe((user) => {
           this.barber.user = user;
           this.barberShopService.create(this.barber).subscribe((r) => {
             this.toasterHelper.showSuccess('Sucesso', 'Cadastro realizado com sucesso!');
-            this.router.navigate(['/login']);
+            this.router.navigate(['/auth/login']);
           })
         }, () => {
           this.toasterHelper.showError('Erro', 'Erro ao realizar o cadastro!');

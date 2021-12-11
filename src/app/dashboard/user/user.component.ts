@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {User} from "../../../@core/data/User";
+import {UserModel} from "../../../@core/data/UserModel";
 import {UserService} from "../../../@core/api/user/user.service";
 import {TokenHelper} from "../../../@core/helpers/token.helper";
 import {ToasterHelper} from "../../../@core/helpers/toaster.helper";
-import {BarberShop} from "../../../@core/data/BarberShop";
+import {BarberShopModel} from "../../../@core/data/BarberShopModel";
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
 import {PermissionService} from "../../../@core/api/permissions/permission.service";
 
@@ -16,8 +16,8 @@ import {PermissionService} from "../../../@core/api/permissions/permission.servi
 })
 export class UserComponent implements OnInit {
 
-  user: User;
-  barberShop: BarberShop;
+  user: UserModel;
+  barberShop: BarberShopModel;
   currentMenuTab: string = 'user';
   permission: string;
 
@@ -31,9 +31,9 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = new User();
-    this.barberShop = new BarberShop();
-    this.barberShop.user = new User();
+    this.user = new UserModel();
+    this.barberShop = new BarberShopModel();
+    this.barberShop.user = new UserModel();
     this.loadUser();
     this.loadBarberBarber();
     this.permissionService.hasPermission().then((permission) => {

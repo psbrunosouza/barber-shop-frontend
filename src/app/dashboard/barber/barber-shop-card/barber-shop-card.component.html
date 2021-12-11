@@ -1,0 +1,23 @@
+<div class="barber-shop-card">
+  <img [src]="barberShop.image" alt=""/>
+  <div class="barber-shop-card-header">
+    <span class="text-muted time-service">{{barberShop.opening_hour}}H ÀS {{barberShop.closing_hour}}H</span>
+  </div>
+  <div class="barber-shop-card-body">
+    <div class="d-flex flex-column">
+      <p class="text-muted m-0">Service</p>
+      <h4 class="m-0">{{ barberShop.name }}</h4>
+      <div class="content-text ">
+        <p class="m-0">
+          {{ barberShop.description.substr(0, 80) }}
+        </p>
+        <span *ngIf="barberShop.description.length >= 80">...</span>
+      </div>
+    </div>
+
+    <div class="form-group d-flex justify-content-end mt-4">
+      <button (click)="selectBarberShop(barberShop.id)" type="button" class="btn btn-primary">Conhecer Serviços
+      </button>
+    </div>
+  </div>
+</div>

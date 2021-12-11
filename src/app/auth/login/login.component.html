@@ -1,0 +1,57 @@
+<div class="auth-screen">
+  <form #form="ngForm">
+    <div class="row auth-card auth-card-sm">
+      <div class="col-md-12 col-lg-6 p-0 login-form gap-3">
+        <div>
+          <h1>Entrar</h1>
+        </div>
+        <div>
+          <input
+            [ngClass]="email.errors?.email && email.dirty ? 'is-invalid' : 'is-valid'"
+            #email="ngModel"
+            email
+            [(ngModel)]="user.email"
+            name="email"
+            type="email"
+            class="form-control"
+            placeHolder="email"
+            id="email"
+            aria-describedby="email">
+          <p *ngIf="email.errors?.email && email.dirty" style="color: #DC3545">Digite um e-mail válido</p>
+        </div>
+
+        <div>
+          <input
+            [ngClass]="password.errors?.required && password.dirty ? 'is-invalid' : 'is-valid'"
+            #password="ngModel"
+            required
+            [(ngModel)]="user.password"
+            name="password"
+            type="password"
+            placeHolder="senha"
+            class="form-control"
+            id="senha">
+          <p *ngIf="password.errors?.required && password.dirty" style="color: #DC3545">Campo Requerído</p>
+        </div>
+
+        <div class="btn-group">
+          <Button
+            type="submit"
+            (click)="login(form)"
+            [disabled]="form.invalid"
+            class="btn btn-block btn-primary">Entrar
+          </Button>
+        </div>
+
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <a class="text-decoration-none" routerLink="/auth/register">Cadastrar novo usuário</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-6 p-0 login-sm login-image">
+        <img src="../../../assets/img/auth/unsplash-barber-back.jpg" alt="">
+      </div>
+    </div>
+  </form>
+</div>
+

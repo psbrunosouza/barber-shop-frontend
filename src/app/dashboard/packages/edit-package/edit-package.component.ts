@@ -1,6 +1,6 @@
-import {Component, ComponentRef, OnInit} from '@angular/core';
+import {Component, ComponentRef, OnDestroy, OnInit} from '@angular/core';
 import {IModalDialog, IModalDialogOptions} from "ngx-modal-dialog";
-import {Packages} from "../../../../@core/data/Packages";
+import {PackageModel} from "../../../../@core/data/PackageModel";
 import {PackageService} from "../../../../@core/api/packages/package.service";
 import {ToasterHelper} from "../../../../@core/helpers/toaster.helper";
 import {NgForm} from "@angular/forms";
@@ -14,7 +14,7 @@ import {TokenHelper} from "../../../../@core/helpers/token.helper";
 })
 export class EditPackageComponent implements OnInit {
   packageId: number;
-  data: Packages;
+  data: PackageModel;
   closeMethodDialog: any;
   closeAction: any;
 
@@ -22,32 +22,33 @@ export class EditPackageComponent implements OnInit {
     private packageService: PackageService,
     private toastHelper: ToasterHelper,
     private tokenHelper: TokenHelper,
-  ) { }
-
-  ngOnInit(): void {
-
+  ) {
   }
 
-  dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<any>> ) {
+  ngOnInit(): void {
+    this.data = new PackageModel();
+  }
+
+  dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<any>>) {
     this.packageId = options.data;
     this.closeMethodDialog = options.closeDialogSubject;
     this.closeAction = options.onClose;
     this.showPackage();
   }
 
-  cancel(){
+  cancel() {
     this.closeMethodDialog.next();
     this.closeAction();
   }
 
-  showPackage(){
-    if(this.tokenHelper.getBarberId()) this.packageService.show(this.packageId)
+  showPackage() {
+    if (this.tokenHelper.getBarberId()) this.packageService.show(this.packageId)
       .subscribe((packages) => {
         this.data = packages;
       });
   }
 
-  onUpdate(id: number, packageModel: Packages, form: NgForm){
+  onUpdate(id: number, packageModel: PackageModel, form: NgForm) {
     this.packageService.update(id, packageModel).subscribe(() => {
       this.toastHelper.showSuccess("Sucesso", "Serviço removido com sucesso!");
       this.closeMethodDialog.next();
@@ -60,5 +61,4 @@ export class EditPackageComponent implements OnInit {
       form.reset();
     })
   }
-
 }

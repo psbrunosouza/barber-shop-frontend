@@ -2,7 +2,6 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DashboardRoutingModule} from './dashboard-routing.module';
 import {HomeComponent} from './home/home.component';
-import {ComponentsModule} from "../../@components/components.module";
 import {DashboardComponent} from "./dashboard.component";
 import {RouterModule} from "@angular/router";
 import {UserComponent} from './user/user.component';
@@ -17,8 +16,14 @@ import {ModalDialogModule} from "ngx-modal-dialog";
 import {DeletePackageComponent} from './packages/delete-package/delete-package.component';
 import {EditPackageComponent} from './packages/edit-package/edit-package.component';
 import {BarberComponent} from './barber/barber.component';
-import {BarberProfileComponent} from "./barber/barber-profile/barber-profile.component";
+import {BarberDetailsComponent} from "./barber/barber-details/barber-details.component";
 import {ChartsModule} from "ng2-charts";
+import {BarberShopCardComponent} from './barber/barber-shop-card/barber-shop-card.component';
+import {LayoutModule} from "../../@layout/layout.module";
+import {ThemeModule} from "../../@theme/theme.module";
+import {BarberContractServiceComponent} from './barber/barber-details/barber-contract-service/barber-contract-service.component';
+import {AddPackageComponent} from './packages/add-package/add-package.component';
+import {DateFnsModule} from "ngx-date-fns";
 
 registerLocaleData(localePt)
 
@@ -32,16 +37,21 @@ registerLocaleData(localePt)
     DeletePackageComponent,
     EditPackageComponent,
     BarberComponent,
-    BarberProfileComponent,
+    BarberDetailsComponent,
+    BarberShopCardComponent,
+    BarberContractServiceComponent,
+    AddPackageComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ComponentsModule,
     RouterModule,
     FormsModule,
     ModalDialogModule,
-    ChartsModule
+    ChartsModule,
+    LayoutModule,
+    ThemeModule,
+    DateFnsModule,
   ],
   providers: [
     TokenHelper,

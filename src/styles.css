@@ -1,3 +1,38 @@
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
 body {
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: 700;
+}
+
+.main-container {
+  padding: 32px;
   overflow-x: hidden;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: cornflowerblue #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 20px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: cornflowerblue;
+  border-radius: 5px;
+  border: 4px solid #ffffff;
 }

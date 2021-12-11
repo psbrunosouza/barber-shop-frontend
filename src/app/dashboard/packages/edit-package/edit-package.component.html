@@ -1,56 +1,105 @@
- <form #form='ngForm'>
-   <div class="row">
-     <div class="col-12 mt-2">
-       <div class="form-group">
-         <label class="form-label">Nome</label>
-         <input
-           name="name"
-           class="form-control"
-           type="text"
-           [(ngModel)]="data.name"
-           required
-           [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
-           #name="ngModel"
-         />
-         <p *ngIf="name.errors?.required && name.dirty" style="color: #DC3545">Campo requerido.</p>
-       </div>
+<form #form='ngForm'>
+  <div class="row">
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label class="form-label">Imagem</label>
+        <input
+          required
+          [ngClass]="image.errors?.required && image.dirty ? 'is-invalid' : 'is-valid'"
+          #image="ngModel"
+          name="image"
+          class="form-control"
+          type="text"
+          [(ngModel)]="data.image"
+        />
+        <p *ngIf="image.errors?.required && image.dirty" style="color: #DC3545">Campo requerido.</p>
+      </div>
+    </div>
 
-     </div>
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label class="form-label">Nome</label>
+        <input
+          name="name"
+          class="form-control"
+          type="text"
+          [(ngModel)]="data.name"
+          required
+          [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
+          #name="ngModel"
+        />
+        <p *ngIf="name.errors?.required && name.dirty" style="color: #DC3545">Campo requerido.</p>
+      </div>
+    </div>
 
-     <div class="col-12 mt-2">
-       <div class="form-group">
-         <label class="form-label">Descrição</label>
-         <input
-           required
-           [ngClass]="name.errors?.required && name.dirty ? 'is-invalid' : 'is-valid'"
-           #description="ngModel"
-           name="description"
-           class="form-control"
-           type="text"
-           [(ngModel)]="data.description"
-         />
-         <p *ngIf="description.errors?.required && description.dirty" style="color: #DC3545">Campo requerido.</p>
-       </div>
-     </div>
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label class="form-label">Tag</label>
+        <input
+          required
+          [ngClass]="tag.errors?.required && tag.dirty ? 'is-invalid' : 'is-valid'"
+          #tag="ngModel"
+          name="tag"
+          class="form-control"
+          type="text"
+          [(ngModel)]="data.tag"
+        />
+        <p *ngIf="tag.errors?.required && tag.dirty" style="color: #DC3545">Campo requerido.</p>
+      </div>
+    </div>
 
-     <div class="col-12 mt-2">
-       <div class="form-group">
-         <label class="form-label">Valor</label>
-         <input
-           required
-           [ngClass]="value.errors?.required && value.dirty ? 'is-invalid' : 'is-valid'"
-           #value="ngModel"
-           name="value" class="form-control" type="text" [(ngModel)]="data.value" />
-         <p *ngIf="value.errors?.required && value.dirty" style="color: #DC3545">Campo requerido.</p>
-       </div>
-     </div>
-     <div class="col-12 mt-2 d-flex justify-content-end">
-       <div class="mt-3 d-flex justify-content-end mx-2">
-         <button (click)="cancel()" class=" btn ">Cancelar</button>
-       </div>
-       <div class="mt-3 d-flex justify-content-end">
-         <button (click)="onUpdate(data.id, data, form)" class=" btn btn-primary">Salvar</button>
-       </div>
-     </div>
-   </div>
- </form>
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label class="form-label">Tempo Médio</label>
+        <input
+          required
+          number
+          [ngClass]="time.errors?.required && time.dirty ? 'is-invalid' : 'is-valid'"
+          #time="ngModel"
+          name="time"
+          class="form-control"
+          type="text"
+          [(ngModel)]="data.time"
+        />
+        <p *ngIf="time.errors?.required && time.dirty" style="color: #DC3545">Campo requerido.</p>
+      </div>
+    </div>
+
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label class="form-label">Descrição</label>
+        <input
+          required
+          [ngClass]="description.errors?.required && description.dirty ? 'is-invalid' : 'is-valid'"
+          #description="ngModel"
+          name="description"
+          class="form-control"
+          type="text"
+          [(ngModel)]="data.description"
+        />
+        <p *ngIf="description.errors?.required && description.dirty" style="color: #DC3545">Campo requerido.</p>
+      </div>
+    </div>
+
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label class="form-label">Valor</label>
+        <input
+          required
+          [ngClass]="value.errors?.required && value.dirty ? 'is-invalid' : 'is-valid'"
+          #value="ngModel"
+          name="value" class="form-control" type="text" [(ngModel)]="data.value"/>
+        <p *ngIf="value.errors?.required && value.dirty" style="color: #DC3545">Campo requerido.</p>
+      </div>
+    </div>
+    <div class="col-12 mt-2 d-flex justify-content-end">
+      <div class="mt-3 d-flex justify-content-end mx-2">
+        <button (click)="cancel()" class=" btn ">Cancelar</button>
+      </div>
+      <div class="mt-3 d-flex justify-content-end">
+        <button [disabled]="form.invalid" (click)="onUpdate(data.id, data, form)" class=" btn btn-primary">Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

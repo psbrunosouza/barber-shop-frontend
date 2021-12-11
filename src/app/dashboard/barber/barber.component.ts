@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BarberShopService} from "../../../@core/api/barber/barber-shop.service";
-import {BarberShop} from "../../../@core/data/BarberShop";
-import {ActivatedRoute, Router} from "@angular/router";
+import {BarberShopModel} from "../../../@core/data/BarberShopModel";
 
 @Component({
   selector: 'app-barber',
@@ -11,21 +10,15 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class BarberComponent implements OnInit {
 
-  barberShops: BarberShop[];
+  barberShops: BarberShopModel[];
 
   constructor(
     private barberShopService: BarberShopService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
     this.loadBarberShops();
-  }
-
-  selectBarberShop(id: number): void {
-    this.router.navigate(['../profile', id], {relativeTo: this.activatedRoute})
   }
 
   loadBarberShops(): void {
