@@ -7,7 +7,6 @@ import {PackageModel} from "../../../../@core/data/PackageModel";
 import {ServiceOrderModel} from "../../../../@core/data/ServiceOrderModel";
 import {ServiceOrderService} from "../../../../@core/api/service-order/service-order.service";
 import {CartService} from "../../../../@core/api/packages/cart.service";
-import {AddPackageComponent} from "../../packages/add-package/add-package.component";
 import {ModalDialogService} from "ngx-modal-dialog";
 import {BarberContractServiceComponent} from "./barber-contract-service/barber-contract-service.component";
 
@@ -72,6 +71,7 @@ export class BarberDetailsComponent implements OnInit {
         data: this.serviceOrder,
         onClose: () => {
           this.clearCart();
+          this.loadActiveOrders(this.barberShopId, SERVICE_STATUS.PENDING);
           return true;
         }
       }

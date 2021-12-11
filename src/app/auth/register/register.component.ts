@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         this.user.profile = PROFILE.USER;
         this.userService.create(this.user).subscribe(response => {
           this.toasterHelper.showSuccess('Sucesso', 'Cadastro realizado com sucesso!');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         }, () => {
           this.toasterHelper.showError('Erro', 'Erro ao realizar o cadastro!');
         });
@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
           this.barber.user = user;
           this.barberShopService.create(this.barber).subscribe((r) => {
             this.toasterHelper.showSuccess('Sucesso', 'Cadastro realizado com sucesso!');
-            this.router.navigate(['/login']);
+            this.router.navigate(['/auth/login']);
           })
         }, () => {
           this.toasterHelper.showError('Erro', 'Erro ao realizar o cadastro!');
