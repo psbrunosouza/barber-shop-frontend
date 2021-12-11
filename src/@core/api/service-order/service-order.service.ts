@@ -18,7 +18,7 @@ export class ServiceOrderService {
   });
 
   list(id: number, query?: string): Observable<ServiceOrderModel[]> {
-    return this.http.get<ServiceOrderModel[]>(`${this.url}/${id}?status=${query}`, {
+    return this.http.get<ServiceOrderModel[]>(`${this.url}/byProvider/${id}?status=${query}`, {
       headers: this.httpHeaders
     })
   }

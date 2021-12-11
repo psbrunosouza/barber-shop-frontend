@@ -13,7 +13,7 @@ import {AtendimentoComponent} from './atendimento/atendimento.component';
 import {LayoutModule} from "../@layout/layout.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
-
+import {DateFnsModule} from "ngx-date-fns";
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import {ToastrModule} from "ngx-toastr";
     HttpClientModule,
     ReactiveFormsModule,
     LayoutModule,
+    DateFnsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {BarberShopModel} from "../../../../@core/data/BarberShopModel";
 import {BarberShopService} from "../../../../@core/api/barber/barber-shop.service";
@@ -7,6 +7,9 @@ import {PackageModel} from "../../../../@core/data/PackageModel";
 import {ServiceOrderModel} from "../../../../@core/data/ServiceOrderModel";
 import {ServiceOrderService} from "../../../../@core/api/service-order/service-order.service";
 import {CartService} from "../../../../@core/api/packages/cart.service";
+import {AddPackageComponent} from "../../packages/add-package/add-package.component";
+import {ModalDialogService} from "ngx-modal-dialog";
+import {BarberContractServiceComponent} from "./barber-contract-service/barber-contract-service.component";
 
 enum SERVICE_STATUS {
   PENDING = 'pending',
@@ -34,7 +37,9 @@ export class BarberDetailsComponent implements OnInit {
     private barberShopService: BarberShopService,
     private packageService: PackageService,
     private serviceOrderService: ServiceOrderService,
-    private cartService: CartService
+    private cartService: CartService,
+    private modalService: ModalDialogService,
+    private viewRef: ViewContainerRef,
   ) {
   }
 
@@ -53,6 +58,24 @@ export class BarberDetailsComponent implements OnInit {
     this.cartService.cart$.subscribe((cart) => {
       this.cart = cart;
     })
+  }
+
+
+  openContractServiceModal(): void {
+    this.serviceOrder.packages = this.cart;
+    this.serviceOrder.provider.id = this.barberShopId;
+
+
+    this.modalService.openDialog(this.viewRef, {
+        title: 'Contratar Pacote',
+        childComponent: BarberContractServiceComponent,
+        data: this.serviceOrder,
+        onClose: () => {
+          this.clearCart();
+          return true;
+        }
+      }
+    )
   }
 
   clearCart(): void {
@@ -75,15 +98,5 @@ export class BarberDetailsComponent implements OnInit {
 
   loadServices(id: number): void {
     this.packageService.list(id).subscribe(service => this.packages = service)
-  }
-
-  contractService() {
-    this.serviceOrder.packages = this.cart;
-    this.serviceOrder.provider.id = this.barberShopId;
-
-
-    this.serviceOrderService.create(this.serviceOrder).subscribe((serviceOrder) => {
-      console.log(serviceOrder)
-    })
   }
 }

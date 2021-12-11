@@ -21,8 +21,9 @@ import {ChartsModule} from "ng2-charts";
 import {BarberShopCardComponent} from './barber/barber-shop-card/barber-shop-card.component';
 import {LayoutModule} from "../../@layout/layout.module";
 import {ThemeModule} from "../../@theme/theme.module";
-import { BarberContractServiceComponent } from './barber/barber-details/barber-contract-service/barber-contract-service.component';
-import { AddPackageComponent } from './packages/add-package/add-package.component';
+import {BarberContractServiceComponent} from './barber/barber-details/barber-contract-service/barber-contract-service.component';
+import {AddPackageComponent} from './packages/add-package/add-package.component';
+import {DateFnsModule} from "ngx-date-fns";
 
 registerLocaleData(localePt)
 
@@ -49,8 +50,8 @@ registerLocaleData(localePt)
     ModalDialogModule,
     ChartsModule,
     LayoutModule,
-    ThemeModule
-
+    ThemeModule,
+    DateFnsModule,
   ],
   providers: [
     TokenHelper,

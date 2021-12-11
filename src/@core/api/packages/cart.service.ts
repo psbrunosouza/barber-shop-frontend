@@ -12,7 +12,6 @@ export class CartService {
 
   constructor() {
     this.cart$.subscribe((cart) => {
-      console.log(cart)
       this.cart = cart;
     })
   }

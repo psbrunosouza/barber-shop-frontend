@@ -27,7 +27,7 @@ export class PackageCardComponent implements OnInit {
   }
 
   addToCart(packageModel: PackageModel): void {
-    this.cartService.saveCart(packageModel);
+    !this.cart.some(item => item.id === packageModel.id) && this.cartService.saveCart(packageModel);
   }
 
 
@@ -43,7 +43,6 @@ export class PackageCardComponent implements OnInit {
       }
     )
   }
-
 
   openUpdateDialog(id: number) {
     this.modalService.openDialog(this.viewRef, {
