@@ -1,0 +1,28 @@
+<form #form='ngForm'>
+  <div class="row">
+    <div class="col-12 mt-2">
+      <div class="form-group">
+        <label class="form-label">Horário de Atendimento</label>
+        <input
+          required
+          [ngClass]="startAttendanceTime.errors?.required && startAttendanceTime.dirty ? 'is-invalid' : 'is-valid'"
+          #startAttendanceTime="ngModel"
+          name="startAttendanceTime"
+          class="form-control"
+          type="datetime-local"
+          [(ngModel)]="serviceOrder.initial_service_time"
+        />
+        <p *ngIf="startAttendanceTime.errors?.required && startAttendanceTime.dirty" style="color: #DC3545">Campo
+          requerido.</p>
+      </div>
+    </div>
+    <div class="col-12 mt-2 d-flex justify-content-end">
+      <div class="mt-3 d-flex justify-content-end mx-2">
+        <button (click)="cancel()" class=" btn ">Cancelar</button>
+      </div>
+      <div class="mt-3 d-flex justify-content-end">
+        <button [disabled]="form.invalid" (click)="onContractService()" class=" btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</form>

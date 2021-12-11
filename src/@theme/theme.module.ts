@@ -6,15 +6,16 @@ import {DashboardHeaderComponent} from "./components/dashboard-header/dashboard-
 import {DashboardSidebarComponent} from "./components/dashboard-sidebar/dashboard-sidebar.component";
 import {RouterModule} from "@angular/router";
 import {TooltipModule} from "ng2-tooltip-directive";
+import {PackageCardComponent} from "./components/package-card/package-card.component";
 
 
 @NgModule({
-  declarations: [TemplateComponent, DashboardFooterComponent, DashboardHeaderComponent, DashboardSidebarComponent],
+  declarations: [TemplateComponent, DashboardFooterComponent, DashboardHeaderComponent, DashboardSidebarComponent, PackageCardComponent],
   imports: [
     CommonModule, RouterModule, TooltipModule
   ],
   exports: [
-    TemplateComponent, DashboardFooterComponent, DashboardHeaderComponent, DashboardSidebarComponent
+    TemplateComponent, DashboardFooterComponent, DashboardHeaderComponent, DashboardSidebarComponent, PackageCardComponent
   ]
 })
 export class ThemeModule {

@@ -17,8 +17,8 @@ export class ServiceOrderService {
     Authorization: 'Bearer ' + this.tokenHelper.getToken(),
   });
 
-  list(): Observable<ServiceOrderModel[]> {
-    return this.http.get<ServiceOrderModel[]>(`${this.url}`, {
+  list(id: number, query?: string): Observable<ServiceOrderModel[]> {
+    return this.http.get<ServiceOrderModel[]>(`${this.url}/byProvider/${id}?status=${query}`, {
       headers: this.httpHeaders
     })
   }

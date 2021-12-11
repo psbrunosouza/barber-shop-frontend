@@ -2798,6 +2798,11 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+date-fns@^2.27.0:
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.27.0.tgz#e1ff3c3ddbbab8a2eaadbb6106be2929a5a2d92b"
+  integrity sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==
+
 date-format@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/date-format/-/date-format-2.1.0.tgz#31d5b5ea211cf5fd764cd38baf9d033df7e125cf"
@@ -5141,6 +5146,13 @@ ng2-validation@^4.2.0:
   integrity sha1-841EHT+36GIVUWZIAEWq/5rRHbs=
   dependencies:
     libphonenumber-js "^0.4.5"
+
+ngx-date-fns@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/ngx-date-fns/-/ngx-date-fns-8.3.0.tgz#c8b8da71a70ee6c79b077c6fa7079eb7f5f67e37"
+  integrity sha512-IZ/R3yTKsJGwqoFdRkA8C1Puc1b+9Gp4mIkVxKAxvvMF+6bUOWNztkuoIlw6thU9/Ob63KbjNlB/LPm8jeFlLQ==
+  dependencies:
+    tslib "^2.0.0"
 
 ngx-modal-dialog@^4.0.0:
   version "4.0.0"
