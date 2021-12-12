@@ -4,6 +4,7 @@ import {ServiceOrderModel} from "../../../@core/data/ServiceOrderModel";
 import {ServiceOrderService} from "../../../@core/api/service-order/service-order.service";
 import {TokenHelper} from "../../../@core/helpers/token.helper";
 import {map} from "rxjs/operators";
+import {ScheduleService} from "./schedule.service";
 
 @Component({
   selector: 'app-schedule',
@@ -15,26 +16,31 @@ export class ScheduleComponent implements OnInit {
   serviceOrders: ServiceOrderModel[] = [];
 
 
-  constructor(private serviceOrderService: ServiceOrderService, private tokenHelper: TokenHelper) {
+  constructor(private serviceOrderService: ServiceOrderService, private tokenHelper: TokenHelper, private scheduleService: ScheduleService) {
   }
+
   ngOnInit(): void {
     this.loadServiceOrder();
+
+    this.scheduleService.refreshScheduleList$.subscribe(() => {
+      this.loadServiceOrder();
+    })
   }
 
   loadServiceOrder() {
-     if(this.tokenHelper.getBarberId()) {
+    if (this.tokenHelper.getBarberId()) {
       this.serviceOrderService.listByProvider(Number(this.tokenHelper.getBarberId())).pipe(
         map((serviceOrders) => serviceOrders.map((serviceOrder) => ({
           ...serviceOrder,
           name: serviceOrder.requested.name
         })))
       ).subscribe((serviceOrders) => {
-      this.serviceOrders = serviceOrders;
-    })
+        this.serviceOrders = serviceOrders;
+      })
     } else if (this.tokenHelper.getUserId()) {
       this.serviceOrderService.listByRequested().pipe(
         map((serviceOrders) => {
-        return serviceOrders.map((serviceOrder) => {
+          return serviceOrders.map((serviceOrder) => {
             return {
               ...serviceOrder,
               name: serviceOrder.provider.name
@@ -42,11 +48,9 @@ export class ScheduleComponent implements OnInit {
           })
         })
       ).subscribe((serviceOrders) => {
-       this.serviceOrders = serviceOrders;
+        this.serviceOrders = serviceOrders;
       })
 
-     }
+    }
   }
-
-
 }

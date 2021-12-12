@@ -4,6 +4,7 @@ import {TokenHelper} from "../../../../@core/helpers/token.helper";
 import {ModalDialogService} from "ngx-modal-dialog";
 import {ConfirmServiceOrderComponent} from "./confirm-service-order/confirm-service-order.component";
 import {CancelServiceOrderComponent} from "./cancel-service-order/cancel-service-order.component";
+import {ScheduleService} from "../schedule.service";
 
 @Component({
   selector: 'app-service-order',
@@ -15,12 +16,12 @@ export class ServiceOrderComponent implements OnInit {
   @Input() ServiceOrders: ServiceOrderModel[] = [];
   providerId: number | undefined;
   serviceOrderStatus: any = {
-    'pending': 'pendente',
-    'concluded': 'concluído',
-    'canceled': 'cancelado'
+    'pending': {status: 'Pendente', color: 'bg-warning'},
+    'concluded': {status: 'Concluído', color: 'bg-success'},
+    'canceled': {status: 'Cancelado', color: 'bg-danger'}
   };
 
-  constructor(private tokenHelper: TokenHelper, private modalService: ModalDialogService, private viewRef: ViewContainerRef) {
+  constructor(private tokenHelper: TokenHelper, private modalService: ModalDialogService, private viewRef: ViewContainerRef, private scheduleService: ScheduleService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class ServiceOrderComponent implements OnInit {
         data: serviceOrder,
         childComponent: ConfirmServiceOrderComponent,
         onClose: () => {
+          this.scheduleService.handleRefreshScheduleList();
           return true;
         }
       }
@@ -43,8 +45,9 @@ export class ServiceOrderComponent implements OnInit {
     this.modalService.openDialog(this.viewRef, {
         title: 'Cancelar atendimento',
         data: serviceOrder,
-      childComponent: CancelServiceOrderComponent,
+        childComponent: CancelServiceOrderComponent,
         onClose: () => {
+          this.scheduleService.handleRefreshScheduleList();
           return true;
         }
       }

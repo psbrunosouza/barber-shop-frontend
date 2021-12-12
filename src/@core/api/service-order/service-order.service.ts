@@ -29,6 +29,18 @@ export class ServiceOrderService {
     })
   }
 
+  confirmService(id: number): Observable<void> {
+    return this.http.put<void>(`${this.url}/${id}/confirm`, {}, {
+      headers: this.httpHeaders
+    })
+  }
+
+  cancelService(id: number): Observable<void> {
+    return this.http.put<void>(`${this.url}/${id}/cancel`, {}, {
+      headers: this.httpHeaders
+    })
+  }
+
   create(serviceOrder: ServiceOrderModel): Observable<ServiceOrderModel> {
     return this.http.post<ServiceOrderModel>(`${this.url}`, serviceOrder, {
       headers: this.httpHeaders
