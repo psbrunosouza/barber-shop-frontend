@@ -25,6 +25,8 @@ import {BarberContractServiceComponent} from './barber/barber-details/barber-con
 import {AddPackageComponent} from './packages/add-package/add-package.component';
 import {DateFnsModule} from "ngx-date-fns";
 import { ServiceOrderComponent } from './schedule/service-order/service-order.component';
+import { ConfirmServiceOrderComponent } from './schedule/service-order/confirm-service-order/confirm-service-order.component';
+import { CancelServiceOrderComponent } from './schedule/service-order/cancel-service-order/cancel-service-order.component';
 
 registerLocaleData(localePt)
 
@@ -43,6 +45,8 @@ registerLocaleData(localePt)
     BarberContractServiceComponent,
     AddPackageComponent,
     ServiceOrderComponent,
+    ConfirmServiceOrderComponent,
+    CancelServiceOrderComponent,
   ],
   imports: [
     CommonModule,
