@@ -50,7 +50,7 @@ export class EditPackageComponent implements OnInit {
 
   onUpdate(id: number, packageModel: PackageModel, form: NgForm) {
     this.packageService.update(id, packageModel).subscribe(() => {
-      this.toastHelper.showSuccess("Sucesso", "Serviço removido com sucesso!");
+      this.toastHelper.showSuccess("Sucesso", "Serviço alterado com sucesso!");
       this.closeMethodDialog.next();
       this.closeAction();
       form.reset();

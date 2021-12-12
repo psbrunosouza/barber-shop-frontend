@@ -12,7 +12,7 @@ import {PackageListService} from "../../../app/dashboard/packages/package-list.s
   styleUrls: ['./package-card.component.css']
 })
 export class PackageCardComponent implements OnInit {
-  @Input() packageModel: PackageModel;
+  @Input() packageModels: PackageModel[] = [];
   @Input() canEdit?: boolean;
   @Input() canDelete?: boolean;
   @Input() canAdd?: boolean;

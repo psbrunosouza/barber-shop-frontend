@@ -1,33 +1,43 @@
 <aside class=" flex-1 bg-light sticky-top p-2 h-100">
   <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center  sticky-top ">
-    <ul class="nav nav-pills nav-flush flex-column flex-nowrap mb-auto mx-auto text-center align-items-center justify-content-center w-100 align-items-center">
+    <ul
+      class="nav nav-pills nav-flush flex-column flex-nowrap mb-auto mx-auto text-center align-items-center justify-content-center w-100 align-items-center">
 
-      <li class="nav-item d-flex align-items-center justify-content-center" tooltip="Dashboard" placement="right" [showDelay]="100" [hideDelay]="100">
-        <a routerLink="/dashboard/home" class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+      <li *ngIf="permission === 'barber'" class="nav-item d-flex align-items-center justify-content-center"
+          tooltip="Dashboard" placement="right" [showDelay]="100" [hideDelay]="100">
+        <a routerLink="/dashboard/home" class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right"
+           data-bs-original-title="Home">
           <i class="bi-house " style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
       </li>
 
-      <li *ngIf="permission === 'user'" class="d-flex align-items-center justify-content-center" tooltip="Barbearias" placement="right" [showDelay]="100" [hideDelay]="100">
-        <a routerLink="/dashboard/barber" class="nav-link "  >
+      <li *ngIf="permission === 'user'" class="d-flex align-items-center justify-content-center" tooltip="Barbearias"
+          placement="right" [showDelay]="100" [hideDelay]="100">
+        <a routerLink="/dashboard/barber" class="nav-link ">
           <i class="bi bi-shop" style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
       </li>
 
-      <li class="d-flex align-items-center justify-content-center" tooltip="Agenda" placement="right" [showDelay]="100" [hideDelay]="100">
-        <a routerLink="/dashboard/schedule" class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+      <li class="d-flex align-items-center justify-content-center" tooltip="Agenda" placement="right" [showDelay]="100"
+          [hideDelay]="100">
+        <a routerLink="/dashboard/schedule" class="nav-link " title="" data-bs-toggle="tooltip"
+           data-bs-placement="right" data-bs-original-title="Orders">
           <i class="bi-table " style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
       </li>
 
-      <li *ngIf="permission === 'barber'" class="d-flex align-items-center justify-content-center" tooltip="Serviços" placement="right" [showDelay]="100" [hideDelay]="100">
-        <a routerLink="/dashboard/packages"  class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+      <li *ngIf="permission === 'barber'" class="d-flex align-items-center justify-content-center" tooltip="Serviços"
+          placement="right" [showDelay]="100" [hideDelay]="100">
+        <a routerLink="/dashboard/packages" class="nav-link " title="" data-bs-toggle="tooltip"
+           data-bs-placement="right" data-bs-original-title="Orders">
           <i class="bi bi-box-seam" style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
       </li>
 
-      <li class="d-flex align-items-center justify-content-center" tooltip="Perfil" placement="right" [showDelay]="100" [hideDelay]="100">
-        <a routerLink="/dashboard/user"  class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+      <li class="d-flex align-items-center justify-content-center" tooltip="Perfil" placement="right" [showDelay]="100"
+          [hideDelay]="100">
+        <a routerLink="/dashboard/user" class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right"
+           data-bs-original-title="Orders">
           <i class="bi-person-circle h2" style="font-size: 28px; color: cornflowerblue;"></i>
         </a>
       </li>

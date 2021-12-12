@@ -1,26 +1,56 @@
 import {Component, OnInit} from '@angular/core';
 import {ToasterHelper} from 'src/@core/helpers/toaster.helper';
+import {ServiceOrderModel} from "../../../@core/data/ServiceOrderModel";
+import {ServiceOrderService} from "../../../@core/api/service-order/service-order.service";
+import {TokenHelper} from "../../../@core/helpers/token.helper";
+import {map} from "rxjs/operators";
+import {ScheduleService} from "./schedule.service";
 
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css'],
-  providers: [ToasterHelper],
+  providers: [ToasterHelper, ServiceOrderService],
 })
 export class ScheduleComponent implements OnInit {
-  currentTab: string = 'calls';
-  scheduleExists: boolean;
+  serviceOrders: ServiceOrderModel[] = [];
 
-  constructor(
-    private toastHelper: ToasterHelper
-  ) {
+
+  constructor(private serviceOrderService: ServiceOrderService, private tokenHelper: TokenHelper, private scheduleService: ScheduleService) {
   }
 
   ngOnInit(): void {
+    this.loadServiceOrder();
+
+    this.scheduleService.refreshScheduleList$.subscribe(() => {
+      this.loadServiceOrder();
+    })
   }
 
-  tabOnClick(current: string) {
-    this.currentTab = current;
-  }
+  loadServiceOrder() {
+    if (this.tokenHelper.getBarberId()) {
+      this.serviceOrderService.listByProvider(Number(this.tokenHelper.getBarberId())).pipe(
+        map((serviceOrders) => serviceOrders.map((serviceOrder) => ({
+          ...serviceOrder,
+          name: serviceOrder.requested.name
+        })))
+      ).subscribe((serviceOrders) => {
+        this.serviceOrders = serviceOrders;
+      })
+    } else if (this.tokenHelper.getUserId()) {
+      this.serviceOrderService.listByRequested().pipe(
+        map((serviceOrders) => {
+          return serviceOrders.map((serviceOrder) => {
+            return {
+              ...serviceOrder,
+              name: serviceOrder.provider.name
+            }
+          })
+        })
+      ).subscribe((serviceOrders) => {
+        this.serviceOrders = serviceOrders;
+      })
 
+    }
+  }
 }

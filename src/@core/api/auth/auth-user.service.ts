@@ -15,6 +15,4 @@ export class AuthUserService {
   login(user: UserModel): Observable<TokenModel> {
     return this.http.post<TokenModel>(`${this.url}/login`, user);
   }
-
-
 }
