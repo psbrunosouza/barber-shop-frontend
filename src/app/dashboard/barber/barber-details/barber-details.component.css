@@ -28,3 +28,7 @@ p {
   border-radius: 5px;
   border: 4px solid #ffffff;
 }
+
+.table-items {
+  vertical-align: middle;
+}

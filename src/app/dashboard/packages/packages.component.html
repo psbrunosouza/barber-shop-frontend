@@ -14,8 +14,7 @@
     </div>
     <app-package-card
       [canDelete]="true" [canEdit]="true"
-      *ngFor="let package of packages"
-      [packageModel]="package"
+      [packageModels]="packages"
       class="col-12 ">
     </app-package-card>
 

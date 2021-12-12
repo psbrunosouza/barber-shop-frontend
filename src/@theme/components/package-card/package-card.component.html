@@ -1,49 +1,34 @@
-<div class="package-card row">
-  <div class="card-item card-image-container col">
-    <img class="card-image" [src]="packageModel.image" alt=""/>
-  </div>
-  <div class="card-item col">
-    <div class="header text-center">Serviço</div>
-    <div class="body">
-      {{packageModel.name}}
-    </div>
-  </div>
-  <div class="card-item col">
-    <div class="header text-center">Descrição</div>
-    <div class="body">
-      {{packageModel.description}}
-    </div>
-  </div>
-  <div class="card-item  col">
-    <div class="header text-center">Tag</div>
-    <div class="body">
-      {{packageModel.tag}}
-    </div>
-  </div>
-  <div class="card-item  col">
-    <div class="header text-center">Tempo Médio</div>
-    <div class="body">
-      {{packageModel.time}}min
-    </div>
-  </div>
-  <div class="card-item col">
-    <div class="header text-center">Valor</div>
-    <div class="body">
-      {{packageModel.value | currency : 'BRL' : true}}
-    </div>
-  </div>
-  <div class="card-item col">
-    <div class="header text-center">Ações</div>
-    <div class="body">
+<table class="table mt-4">
+  <thead>
+  <tr>
+    <th scope="col">Imagem</th>
+    <th scope="col">Serviço</th>
+    <th scope="col">Descrição</th>
+    <th scope="col">Tag</th>
+    <th scope="col">Tempo Médio</th>
+    <th scope="col">Valor</th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let packageModel of packageModels" class="table-items">
+    <td><img class="table-image" [src]="packageModel.image" alt=""/></td>
+    <td>{{packageModel.name}}</td>
+    <td>{{packageModel.description}}</td>
+    <td>{{packageModel.tag}}</td>
+    <td>{{packageModel.time}}min</td>
+    <td>{{packageModel.value | currency : 'BRL' : true}}</td>
+    <td>
       <button *ngIf="canAdd" (click)="addToCart(packageModel)" class="btn "><i
-        class="bi bi-plus-circle-fill fs-2 text-primary"></i>
+        class="bi bi-plus-circle-fill fs-4 text-primary"></i>
       </button>
-      <button *ngIf="canEdit" (click)="openUpdateDialog(packageModel.id)" class="btn "><i
-        class="bi fs-2 text-primary  bi-pencil-fill"></i>
+      <button *ngIf="canEdit" (click)="openUpdateDialog(packageModel.id)" class="btn ">
+        <i class="bi bi-pencil-fill text-primary fs-4"></i>
       </button>
-      <button *ngIf="canDelete" (click)="openDeleteDialog(packageModel)" class="btn "><i
-        class="bi fs-2 text-danger  bi-trash-fill"></i>
+      <button *ngIf="canDelete" (click)="openDeleteDialog(packageModel)" class="btn ">
+        <i class="bi bi-x-circle-fill text-danger fs-4"></i>
       </button>
-    </div>
-  </div>
-</div>
+    </td>
+  </tr>
+  </tbody>
+</table>
