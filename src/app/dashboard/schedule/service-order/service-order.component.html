@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Hora de início</th>
+    <th scope="col">Hora final</th>
+    <th scope="col">Status</th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let serviceOrder of ServiceOrders">
+    <td>{{serviceOrder?.name}}</td>
+    <td>{{serviceOrder.initial_service_time | date:"dd/MM/yyyy HH:mm" }}</td>
+    <td>{{serviceOrder.final_service_time | date:"dd/MM/yyyy HH:mm" }}</td>
+    <td>{{serviceOrderStatus[serviceOrder.status]}}</td>
+    <td>
+      <button type="button" class="btn btn-link"><i class="bi bi-x-circle-fill fs-4 text-danger"></i></button>
+      <button type="button" class="btn btn-link"><i class="bi bi-check-circle-fill text-success fs-4"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -24,6 +24,7 @@ import {ThemeModule} from "../../@theme/theme.module";
 import {BarberContractServiceComponent} from './barber/barber-details/barber-contract-service/barber-contract-service.component';
 import {AddPackageComponent} from './packages/add-package/add-package.component';
 import {DateFnsModule} from "ngx-date-fns";
+import { ServiceOrderComponent } from './schedule/service-order/service-order.component';
 
 registerLocaleData(localePt)
 
@@ -41,6 +42,7 @@ registerLocaleData(localePt)
     BarberShopCardComponent,
     BarberContractServiceComponent,
     AddPackageComponent,
+    ServiceOrderComponent,
   ],
   imports: [
     CommonModule,
