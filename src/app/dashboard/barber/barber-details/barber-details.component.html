@@ -14,16 +14,20 @@
       <div class="col">
         <div class="row align-items-center h-100 ">
           <div class="row">
-            <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Estado:</strong> {{barberShop.state}}</p></div>
-            <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Cidade:</strong> {{barberShop.city}}</p></div>
-            <div class="col-md-4 col-lg-4 col-sm-12"><p><strong>Rua:</strong> {{barberShop.street}}</p></div>
+            <div class="col-md-3 col-lg-3 col-sm-12"><p><strong>Estado:</strong> {{barberShop.state}}</p></div>
+            <div class="col-md-3 col-lg-3 col-sm-12"><p><strong>Cidade:</strong> {{barberShop.city}}</p></div>
+            <div class="col-md-3 col-lg-3 col-sm-12"><p><strong>Rua:</strong> {{barberShop.street}}</p></div>
+            <div class="col-lg-3 col-md-3 col-sm-12"><p><strong>Hórario de abertura:</strong> {{barberShop.opening_hour}}h</p></div>
           </div>
 
           <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>CEP:</strong> {{barberShop.zipcode}}</p></div>
-            <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>E-mail:</strong> {{barberShop.email}}</p></div>
-            <div class="col-lg-4 col-md-4 col-sm-12"><p><strong>Número:</strong> {{barberShop.streetNumber}}</p></div>
+            <div class="col-lg-3 col-md-3 col-sm-12"><p><strong>CEP:</strong> {{barberShop.zipcode}}</p></div>
+            <div class="col-lg-3 col-md-3 col-sm-12"><p><strong>E-mail:</strong> {{barberShop.email}}</p></div>
+            <div class="col-lg-3 col-md-3 col-sm-12"><p><strong>Número:</strong> {{barberShop.streetNumber}}</p></div>
+            <div class="col-lg-3 col-md-3 col-sm-12"><p><strong>Hórario de fechamento:</strong> {{barberShop.closing_hour }}h</p></div>
           </div>
+
+
         </div>
 
       </div>
@@ -33,8 +37,8 @@
   <h3 class="mt-4">Serviços</h3>
   <div class="row m-0 p-0">
     <div class="col">
-      <app-package-card [canAdd]="true" *ngFor="let package of packages"
-                        [packageModel]="package"></app-package-card>
+      <app-package-card [canAdd]="true"
+                        [packageModels]="packages"></app-package-card>
     </div>
 
     <div class="col-auto">
@@ -76,13 +80,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let service of cart; let i = index">
+            <tr *ngFor="let service of cart; let i = index" class="table-items">
               <th scope="row">{{i + 1}}</th>
               <td>{{ service.name }}</td>
               <td>{{ service.description }}</td>
               <td>{{ service.value | currency:'BRL':true }}</td>
               <td>
-                <button class="btn" (click)="removeFromCart(service.id)"><i class="bi bi-dash-circle"></i></button>
+                <button class="btn" (click)="removeFromCart(service.id)"><i class="bi bi-dash-circle-fill text-danger fs-4"></i></button>
               </td>
             </tr>
             </tbody>

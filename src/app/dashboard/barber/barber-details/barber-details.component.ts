@@ -87,7 +87,7 @@ export class BarberDetailsComponent implements OnInit {
   }
 
   loadActiveOrders(barberId: number, query?: string): void {
-    this.serviceOrderService.list(barberId, query).subscribe((activeServiceOrders) => {
+    this.serviceOrderService.listByProvider(barberId, query).subscribe((activeServiceOrders) => {
       this.activeServiceOrders = activeServiceOrders;
     })
   }

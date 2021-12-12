@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {TokenHelper} from "../helpers/token.helper";
 import {ToasterHelper} from "../helpers/toaster.helper";
 import {ToastrService} from "ngx-toastr";
@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
 
     if (!this.tokenHelper.getToken() || this.tokenHelper.isExpiredToken()) {
       this.toaster.showWarning('Erro', 'Seu tempo de seção expirou, por favor realize o login novamente.')
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
       return false;
     }
     return true;

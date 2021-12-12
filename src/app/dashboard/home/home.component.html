@@ -13,7 +13,7 @@
       </div>
 
       <div class="m-auto">
-        <p class="card-text text-center fs-2">450,00 R$</p>
+        <p class="card-text text-center fs-2">{{data.amount | currency : 'BRL': true}}</p>
         <h5 class="card-title text-center">Lucro do dia</h5>
       </div>
     </div>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="m-auto">
-        <p class="card-text text-center fs-2">30</p>
+        <p class="card-text text-center fs-2">{{serviceOrders.length}}</p>
         <h5 class="card-title text-center">Atendimentos realizados</h5>
       </div>
     </div>
@@ -39,7 +39,7 @@
       </div>
 
       <div class="m-auto">
-        <p class="card-text text-center fs-2">1000</p>
+        <p class="card-text text-center fs-2">{{data.hours}}</p>
         <h5 class="card-title text-end ">Horas atendidas</h5>
       </div>
     </div>
@@ -52,7 +52,7 @@
       </div>
 
       <div class="m-auto">
-        <p class="card-text text-center fs-2">8</p>
+        <p class="card-text text-center fs-2">{{data.serviceQuantity}}</p>
         <h5 class="card-title text-center">Serviços oferecidos</h5>
       </div>
     </div>
@@ -64,30 +64,16 @@
   <div class="card col-5">
     <div>
       <div>
-        <div style="display: block">
-          <canvas baseChart
-                  [datasets]="barChartData"
-                  [labels]="barChartLabels"
-                  [options]="barChartOptions"
-                  [legend]="barChartLegend"
-                  [chartType]="barChartType">
-          </canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card col-5">
-    <div>
-      <div>
         <div class="chart">
-          <canvas baseChart
-                  [data]="pieChartData"
-                  [labels]="pieChartLabels"
-                  [chartType]="pieChartType"
-                  [options]="pieChartOptions"
-                  [colors]="pieChartColors"
-                  [legend]="pieChartLegend">
+          <canvas
+            baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [colors]="pieChartColors"
+            [legend]="pieChartLegend"
+          >
           </canvas>
         </div>
       </div>

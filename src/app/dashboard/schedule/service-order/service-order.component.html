@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Hora de início</th>
+    <th scope="col">Hora final</th>
+    <th scope="col">Status</th>
+    <th *ngIf="providerId" scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let serviceOrder of ServiceOrders">
+    <td>{{serviceOrder?.name}}</td>
+    <td>{{serviceOrder.initial_service_time | date:"dd/MM/yyyy HH:mm" }}</td>
+    <td>{{serviceOrder.final_service_time | date:"dd/MM/yyyy HH:mm" }}</td>
+    <td><strong
+      [class]="serviceOrderStatus[serviceOrder.status].color"
+      class="badge">{{serviceOrderStatus[serviceOrder.status].status}}</strong>
+    </td>
+    <td *ngIf="providerId">
+      <button [disabled]="serviceOrder.status !== 'pending'" (click)="openCancelDialog(serviceOrder)" type="button"
+              class="btn btn-link"><i
+        class="bi bi-x-circle-fill fs-4 text-danger"></i></button>
+      <button [disabled]="serviceOrder.status !== 'pending'" (click)="openConfirmDialog(serviceOrder)" type="button"
+              class="btn btn-link"><i
+        class="bi bi-check-circle-fill text-success fs-4"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>

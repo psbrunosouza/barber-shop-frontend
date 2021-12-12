@@ -47,4 +47,10 @@ export class PackageService {
       headers: this.httpHeaders
     })
   }
+
+  offeredServices(id: number): Observable<number> {
+    return this.http.get<number>(`${this.url}/packages/barbers/${id}/offered_service`, {
+      headers: this.httpHeaders
+    })
+  }
 }
